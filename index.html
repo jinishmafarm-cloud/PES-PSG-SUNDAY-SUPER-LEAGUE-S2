@@ -2,15 +2,11 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#091114">
 
 <title>Sunday Super League | Season 2</title>
-
 
 <style>
 
@@ -471,6 +467,13 @@ tr.qualify{
     border-bottom:0;
 }
 
+.fixture-number{
+    color:#657277;
+    font-size:10px;
+    font-weight:700;
+    margin-right:5px;
+}
+
 .fixture-team{
     display:flex;
     align-items:center;
@@ -654,7 +657,6 @@ footer{
 }
 
 </style>
-
 </head>
 
 
@@ -676,15 +678,8 @@ footer{
             </div>
 
             <div>
-
-                <h2>
-                    Sunday Super League
-                </h2>
-
-                <span>
-                    SEASON 2
-                </span>
-
+                <h2>Sunday Super League</h2>
+                <span>SEASON 2</span>
             </div>
 
         </div>
@@ -692,21 +687,10 @@ footer{
 
         <div class="nav-links">
 
-            <a href="#dashboard">
-                Dashboard
-            </a>
-
-            <a href="#standings">
-                Standings
-            </a>
-
-            <a href="#fixtures">
-                Fixtures
-            </a>
-
-            <a href="#semifinals">
-                Semi Finals
-            </a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#standings">Standings</a>
+            <a href="#fixtures">Fixtures</a>
+            <a href="#semifinals">Semi Finals</a>
 
         </div>
 
@@ -753,57 +737,37 @@ footer{
 
         <div class="dashboard-grid">
 
-
             <div class="dashboard-card">
 
-                <span>
-                    Matches Played
-                </span>
+                <span>Matches Played</span>
 
-                <h3 id="playedCount">
-                    0
-                </h3>
+                <h3 id="playedCount">0</h3>
 
-                <p>
-                    Completed fixtures
-                </p>
+                <p>Completed fixtures</p>
 
             </div>
 
 
             <div class="dashboard-card">
 
-                <span>
-                    Remaining
-                </span>
+                <span>Remaining</span>
 
-                <h3 id="remainingCount">
-                    90
-                </h3>
+                <h3 id="remainingCount">90</h3>
 
-                <p>
-                    Fixtures remaining
-                </p>
+                <p>Fixtures remaining</p>
 
             </div>
 
 
             <div class="dashboard-card">
 
-                <span>
-                    Current Leader
-                </span>
+                <span>Current Leader</span>
 
-                <h3 id="leaderName">
-                    —
-                </h3>
+                <h3 id="leaderName">—</h3>
 
-                <p>
-                    Based on points
-                </p>
+                <p>Based on points</p>
 
             </div>
-
 
         </div>
 
@@ -824,9 +788,7 @@ footer{
 
             <div>
 
-                <h2>
-                    Goals Leader
-                </h2>
+                <h2>Goals Leader</h2>
 
                 <p>
                     Team with the most goals scored
@@ -838,7 +800,6 @@ footer{
 
 
         <div class="top-team">
-
 
             <div>
 
@@ -868,18 +829,13 @@ footer{
 
                 <div class="top-goals">
 
-                    <span id="topGoals">
-                        0
-                    </span>
+                    <span id="topGoals">0</span>
 
-                    <small>
-                        GOALS
-                    </small>
+                    <small>GOALS</small>
 
                 </div>
 
             </div>
-
 
         </div>
 
@@ -900,9 +856,7 @@ footer{
 
             <div>
 
-                <h2>
-                    League Table
-                </h2>
+                <h2>League Table</h2>
 
                 <p>
                     Top 4 qualify for the semi-finals
@@ -921,53 +875,27 @@ footer{
 
                     <tr>
 
-                        <th>
-                            #
-                        </th>
+                        <th>#</th>
 
                         <th style="text-align:left;">
                             TEAM
                         </th>
 
-                        <th>
-                            P
-                        </th>
-
-                        <th>
-                            W
-                        </th>
-
-                        <th>
-                            D
-                        </th>
-
-                        <th>
-                            L
-                        </th>
-
-                        <th>
-                            GF
-                        </th>
-
-                        <th>
-                            GA
-                        </th>
-
-                        <th>
-                            GD
-                        </th>
-
-                        <th>
-                            PTS
-                        </th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>GF</th>
+                        <th>GA</th>
+                        <th>GD</th>
+                        <th>PTS</th>
 
                     </tr>
 
                 </thead>
 
 
-                <tbody id="standingsBody">
-                </tbody>
+                <tbody id="standingsBody"></tbody>
 
             </table>
 
@@ -990,9 +918,7 @@ footer{
 
             <div>
 
-                <h2>
-                    Teams
-                </h2>
+                <h2>Teams</h2>
 
                 <p>
                     Season 2 participants
@@ -1005,8 +931,7 @@ footer{
 
         <div
             id="teamGrid"
-            class="team-grid"
-        >
+            class="team-grid">
         </div>
 
     </div>
@@ -1016,6 +941,23 @@ footer{
 
 <!-- =====================================================
      FIXTURES
+     
+     IMPORTANT:
+     THE WEBSITE USES THIS EXACT HTML ORDER.
+     
+     Match 1 = first entry
+     Match 2 = second entry
+     Match 3 = third entry
+     
+     ENTER RESULTS ONLY IN:
+     
+     data-home=""
+     data-away=""
+     
+     Example:
+     
+     data-home="3"
+     data-away="1"
 ====================================================== -->
 
 <section id="fixtures">
@@ -1026,9 +968,7 @@ footer{
 
             <div>
 
-                <h2>
-                    League Fixtures
-                </h2>
+                <h2>League Fixtures</h2>
 
                 <p>
                     18 Matchdays • Double Round Robin
@@ -1039,8 +979,7 @@ footer{
         </div>
 
 
-        <div id="fixturesContainer">
-        </div>
+        <div id="fixturesContainer"></div>
 
     </div>
 
@@ -1048,7 +987,829 @@ footer{
 
 
 <!-- =====================================================
-     INTER MILAN SECTION
+     HTML MATCH RESULTS
+     
+     EXACT FIXTURE ORDER
+====================================================== -->
+
+<div id="matchResultsData">
+
+
+<!-- =====================================================
+     MATCHDAY 1
+====================================================== -->
+
+<div class="match-result"
+data-match="1"
+data-home-team="BVB"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="2"
+data-home-team="Brazil"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="3"
+data-home-team="Barcelona"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="4"
+data-home-team="Bayern München"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="5"
+data-home-team="Real Madrid"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 2
+====================================================== -->
+
+<div class="match-result"
+data-match="6"
+data-home-team="PSG"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="7"
+data-home-team="Monaco FC"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="8"
+data-home-team="BVB"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="9"
+data-home-team="Inter Milan"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="10"
+data-home-team="Manchester United"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 3
+====================================================== -->
+
+<div class="match-result"
+data-match="11"
+data-home-team="Barcelona"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="12"
+data-home-team="PSG"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="13"
+data-home-team="Bayern München"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="14"
+data-home-team="BVB"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="15"
+data-home-team="Brazil"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 4
+====================================================== -->
+
+<div class="match-result"
+data-match="16"
+data-home-team="Norway"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="17"
+data-home-team="Real Madrid"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="18"
+data-home-team="Monaco FC"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="19"
+data-home-team="Inter Milan"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="20"
+data-home-team="Brazil"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 5
+====================================================== -->
+
+<div class="match-result"
+data-match="21"
+data-home-team="Barcelona"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="22"
+data-home-team="Manchester United"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="23"
+data-home-team="Inter Milan"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="24"
+data-home-team="Bayern München"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="25"
+data-home-team="Norway"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 6
+====================================================== -->
+
+<div class="match-result"
+data-match="26"
+data-home-team="Monaco FC"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="27"
+data-home-team="BVB"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="28"
+data-home-team="Real Madrid"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="29"
+data-home-team="PSG"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="30"
+data-home-team="Bayern München"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 7
+====================================================== -->
+
+<div class="match-result"
+data-match="31"
+data-home-team="Barcelona"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="32"
+data-home-team="Norway"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="33"
+data-home-team="Brazil"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="34"
+data-home-team="Monaco FC"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="35"
+data-home-team="Manchester United"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 8
+====================================================== -->
+
+<div class="match-result"
+data-match="36"
+data-home-team="Real Madrid"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="37"
+data-home-team="Inter Milan"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="38"
+data-home-team="PSG"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="39"
+data-home-team="BVB"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="40"
+data-home-team="Norway"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 9
+====================================================== -->
+
+<div class="match-result"
+data-match="41"
+data-home-team="Barcelona"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="42"
+data-home-team="Inter Milan"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="43"
+data-home-team="Bayern München"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="44"
+data-home-team="Real Madrid"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="45"
+data-home-team="PSG"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 10
+====================================================== -->
+
+<div class="match-result"
+data-match="46"
+data-home-team="Monaco FC"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="47"
+data-home-team="BVB"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="48"
+data-home-team="Barcelona"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="49"
+data-home-team="Manchester United"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="50"
+data-home-team="Brazil"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 11
+====================================================== -->
+
+<div class="match-result"
+data-match="51"
+data-home-team="Barcelona"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="52"
+data-home-team="Brazil"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="53"
+data-home-team="Bayern München"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="54"
+data-home-team="Norway"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="55"
+data-home-team="Real Madrid"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 12
+====================================================== -->
+
+<div class="match-result"
+data-match="56"
+data-home-team="Inter Milan"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="57"
+data-home-team="PSG"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="58"
+data-home-team="BVB"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="59"
+data-home-team="Monaco FC"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="60"
+data-home-team="Manchester United"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 13
+====================================================== -->
+
+<div class="match-result"
+data-match="61"
+data-home-team="Barcelona"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="62"
+data-home-team="Monaco FC"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="63"
+data-home-team="Bayern München"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="64"
+data-home-team="Brazil"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="65"
+data-home-team="Real Madrid"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 14
+====================================================== -->
+
+<div class="match-result"
+data-match="66"
+data-home-team="Norway"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="67"
+data-home-team="PSG"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="68"
+data-home-team="Manchester United"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="69"
+data-home-team="Inter Milan"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="70"
+data-home-team="BVB"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 15
+====================================================== -->
+
+<div class="match-result"
+data-match="71"
+data-home-team="Barcelona"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="72"
+data-home-team="Real Madrid"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="73"
+data-home-team="Bayern München"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="74"
+data-home-team="Monaco FC"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="75"
+data-home-team="PSG"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 16
+====================================================== -->
+
+<div class="match-result"
+data-match="76"
+data-home-team="Norway"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="77"
+data-home-team="BVB"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="78"
+data-home-team="Brazil"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="79"
+data-home-team="Inter Milan"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="80"
+data-home-team="Manchester United"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 17
+====================================================== -->
+
+<div class="match-result"
+data-match="81"
+data-home-team="Barcelona"
+data-away-team="Bayern München"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="82"
+data-home-team="Bayern München"
+data-away-team="Barcelona"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="83"
+data-home-team="Real Madrid"
+data-away-team="PSG"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="84"
+data-home-team="PSG"
+data-away-team="Real Madrid"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="85"
+data-home-team="Monaco FC"
+data-away-team="BVB"
+data-home=""
+data-away="">
+</div>
+
+
+<!-- =====================================================
+     MATCHDAY 18
+====================================================== -->
+
+<div class="match-result"
+data-match="86"
+data-home-team="BVB"
+data-away-team="Monaco FC"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="87"
+data-home-team="Brazil"
+data-away-team="Norway"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="88"
+data-home-team="Norway"
+data-away-team="Brazil"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="89"
+data-home-team="Inter Milan"
+data-away-team="Manchester United"
+data-home=""
+data-away="">
+</div>
+
+<div class="match-result"
+data-match="90"
+data-home-team="Manchester United"
+data-away-team="Inter Milan"
+data-home=""
+data-away="">
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     INTER MILAN
 ====================================================== -->
 
 <section class="inter-section">
@@ -1059,9 +1820,7 @@ footer{
 
             <div>
 
-                <h2>
-                    THALA • Inter Milan
-                </h2>
+                <h2>THALA • Inter Milan</h2>
 
                 <p>
                     Complete Inter Milan fixture list
@@ -1074,8 +1833,7 @@ footer{
 
         <div
             id="interFixtures"
-            class="inter-box"
-        >
+            class="inter-box">
         </div>
 
     </div>
@@ -1095,9 +1853,7 @@ footer{
 
             <div>
 
-                <h2>
-                    Semi Finals
-                </h2>
+                <h2>Semi Finals</h2>
 
                 <p>
                     1st vs 4th • 2nd vs 3rd
@@ -1113,10 +1869,7 @@ footer{
 
             <div class="semi-card">
 
-                <h3>
-                    SEMI FINAL 1
-                </h3>
-
+                <h3>SEMI FINAL 1</h3>
 
                 <div class="semi-team">
 
@@ -1126,21 +1879,17 @@ footer{
                         alt=""
                     >
 
-                    <strong id="semi1team1">
-                        —
-                    </strong>
+                    <strong id="semi1team1">—</strong>
 
                 </div>
 
 
                 <div
                     style="
-                        text-align:center;
-                        color:#5d696e;
-                        font-size:11px;
-                        padding:8px;
-                    "
-                >
+                    text-align:center;
+                    color:#5d696e;
+                    font-size:11px;
+                    padding:8px;">
                     VS
                 </div>
 
@@ -1153,9 +1902,7 @@ footer{
                         alt=""
                     >
 
-                    <strong id="semi1team2">
-                        —
-                    </strong>
+                    <strong id="semi1team2">—</strong>
 
                 </div>
 
@@ -1164,10 +1911,7 @@ footer{
 
             <div class="semi-card">
 
-                <h3>
-                    SEMI FINAL 2
-                </h3>
-
+                <h3>SEMI FINAL 2</h3>
 
                 <div class="semi-team">
 
@@ -1177,21 +1921,17 @@ footer{
                         alt=""
                     >
 
-                    <strong id="semi2team1">
-                        —
-                    </strong>
+                    <strong id="semi2team1">—</strong>
 
                 </div>
 
 
                 <div
                     style="
-                        text-align:center;
-                        color:#5d696e;
-                        font-size:11px;
-                        padding:8px;
-                    "
-                >
+                    text-align:center;
+                    color:#5d696e;
+                    font-size:11px;
+                    padding:8px;">
                     VS
                 </div>
 
@@ -1204,349 +1944,17 @@ footer{
                         alt=""
                     >
 
-                    <strong id="semi2team2">
-                        —
-                    </strong>
+                    <strong id="semi2team2">—</strong>
 
                 </div>
 
             </div>
-
 
         </div>
 
     </div>
 
 </section>
-
-
-<!-- =====================================================
-     HTML MATCH RESULTS
-     
-     THIS IS THE ONLY PLACE WHERE YOU ENTER RESULTS.
-
-     IMPORTANT:
-     The team names are written here for reference.
-
-     Example:
-     Barcelona 3 - 1 Bayern München
-
-     Change:
-     data-home="3"
-     data-away="1"
-
-====================================================== -->
-
-<div id="matchResultsData">
-
-
-    <!-- =================================================
-         MATCHDAY 1
-    ================================================== -->
-
-    <div
-        class="match-result"
-        data-match="1"
-        data-home-team="Barcelona"
-        data-away-team="Bayern München"
-        data-home="1"
-        data-away="1">
-    </div>
-
-    <div
-        class="match-result"
-        data-match="2"
-        data-home-team="Real Madrid"
-        data-away-team="PSG"
-        data-home=""
-        data-away="">
-    </div>
-
-    <div
-        class="match-result"
-        data-match="3"
-        data-home-team="Monaco FC"
-        data-away-team="BVB"
-        data-home=""
-        data-away="">
-    </div>
-
-    <div
-        class="match-result"
-        data-match="4"
-        data-home-team="Inter Milan"
-        data-away-team="Manchester United"
-        data-home=""
-        data-away="">
-    </div>
-
-    <div
-        class="match-result"
-        data-match="5"
-        data-home-team="Brazil"
-        data-away-team="Norway"
-        data-home=""
-        data-away="">
-    </div>
-
-
-    <!-- =================================================
-         MATCHDAY 2
-    ================================================== -->
-
-    <div class="match-result" data-match="6" data-home-team="Barcelona" data-away-team="PSG" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="7" data-home-team="Bayern München" data-away-team="BVB" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="8" data-home-team="Real Madrid" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="9" data-home-team="Monaco FC" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="10" data-home-team="Brazil" data-away-team="Norway" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 3
-    ================================================== -->
-
-    <div class="match-result" data-match="11" data-home-team="Barcelona" data-away-team="BVB" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="12" data-home-team="PSG" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="13" data-home-team="Bayern München" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="14" data-home-team="Real Madrid" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="15" data-home-team="Monaco FC" data-away-team="Norway" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 4
-    ================================================== -->
-
-    <div class="match-result" data-match="16" data-home-team="Barcelona" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="17" data-home-team="BVB" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="18" data-home-team="PSG" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="19" data-home-team="Bayern München" data-away-team="Norway" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="20" data-home-team="Real Madrid" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 5
-    ================================================== -->
-
-    <div class="match-result" data-match="21" data-home-team="Barcelona" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="22" data-home-team="Inter Milan" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="23" data-home-team="BVB" data-away-team="Norway" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="24" data-home-team="PSG" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="25" data-home-team="Bayern München" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 6
-    ================================================== -->
-
-    <div class="match-result" data-match="26" data-home-team="Barcelona" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="27" data-home-team="Manchester United" data-away-team="Norway" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="28" data-home-team="Inter Milan" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="29" data-home-team="BVB" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="30" data-home-team="PSG" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 7
-    ================================================== -->
-
-    <div class="match-result" data-match="31" data-home-team="Barcelona" data-away-team="Norway" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="32" data-home-team="Brazil" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="33" data-home-team="Manchester United" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="34" data-home-team="Inter Milan" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="35" data-home-team="BVB" data-away-team="PSG" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 8
-    ================================================== -->
-
-    <div class="match-result" data-match="36" data-home-team="Barcelona" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="37" data-home-team="Norway" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="38" data-home-team="Brazil" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="39" data-home-team="Manchester United" data-away-team="PSG" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="40" data-home-team="Inter Milan" data-away-team="BVB" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 9
-    ================================================== -->
-
-    <div class="match-result" data-match="41" data-home-team="Barcelona" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="42" data-home-team="Monaco FC" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="43" data-home-team="Norway" data-away-team="PSG" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="44" data-home-team="Brazil" data-away-team="BVB" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="45" data-home-team="Manchester United" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 10
-         SECOND LEG
-    ================================================== -->
-
-    <div class="match-result" data-match="46" data-home-team="Bayern München" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="47" data-home-team="PSG" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="48" data-home-team="BVB" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="49" data-home-team="Manchester United" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="50" data-home-team="Norway" data-away-team="Brazil" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 11
-    ================================================== -->
-
-    <div class="match-result" data-match="51" data-home-team="PSG" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="52" data-home-team="BVB" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="53" data-home-team="Inter Milan" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="54" data-home-team="Manchester United" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="55" data-home-team="Norway" data-away-team="Brazil" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 12
-    ================================================== -->
-
-    <div class="match-result" data-match="56" data-home-team="BVB" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="57" data-home-team="Inter Milan" data-away-team="PSG" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="58" data-home-team="Manchester United" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="59" data-home-team="Brazil" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="60" data-home-team="Norway" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 13
-    ================================================== -->
-
-    <div class="match-result" data-match="61" data-home-team="Inter Milan" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="62" data-home-team="Manchester United" data-away-team="BVB" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="63" data-home-team="Brazil" data-away-team="PSG" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="64" data-home-team="Norway" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="65" data-home-team="Monaco FC" data-away-team="Real Madrid" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 14
-    ================================================== -->
-
-    <div class="match-result" data-match="66" data-home-team="Manchester United" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="67" data-home-team="Brazil" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="68" data-home-team="Norway" data-away-team="BVB" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="69" data-home-team="Monaco FC" data-away-team="PSG" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="70" data-home-team="Real Madrid" data-away-team="Bayern München" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 15
-    ================================================== -->
-
-    <div class="match-result" data-match="71" data-home-team="Brazil" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="72" data-home-team="Norway" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="73" data-home-team="Monaco FC" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="74" data-home-team="Real Madrid" data-away-team="BVB" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="75" data-home-team="Bayern München" data-away-team="PSG" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 16
-    ================================================== -->
-
-    <div class="match-result" data-match="76" data-home-team="Norway" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="77" data-home-team="Monaco FC" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="78" data-home-team="Real Madrid" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="79" data-home-team="Bayern München" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="80" data-home-team="PSG" data-away-team="BVB" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 17
-    ================================================== -->
-
-    <div class="match-result" data-match="81" data-home-team="Monaco FC" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="82" data-home-team="Real Madrid" data-away-team="Norway" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="83" data-home-team="Bayern München" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="84" data-home-team="PSG" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="85" data-home-team="BVB" data-away-team="Inter Milan" data-home="" data-away=""></div>
-
-
-    <!-- =================================================
-         MATCHDAY 18
-    ================================================== -->
-
-    <div class="match-result" data-match="86" data-home-team="Real Madrid" data-away-team="Barcelona" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="87" data-home-team="Bayern München" data-away-team="Monaco FC" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="88" data-home-team="PSG" data-away-team="Norway" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="89" data-home-team="BVB" data-away-team="Brazil" data-home="" data-away=""></div>
-
-    <div class="match-result" data-match="90" data-home-team="Inter Milan" data-away-team="Manchester United" data-home="" data-away=""></div>
-
-
-</div>
 
 
 <!-- =====================================================
@@ -1563,14 +1971,6 @@ footer{
 
 </footer>
 
-
-<!-- =====================================================
-     JAVASCRIPT
-     
-     DO NOT ENTER RESULTS HERE.
-     
-     JavaScript ONLY READS THE HTML RESULTS ABOVE.
-====================================================== -->
 
 <script>
 
@@ -1644,141 +2044,73 @@ const teams = [
 
 
 /* =========================================================
-   GENERATE DOUBLE ROUND ROBIN
+   TEAM LOOKUP
 ========================================================= */
 
-let fixtures = [];
+const teamMap = {};
 
-let fixtureId = 1;
-
-
-/* FIRST LEG */
-
-for(let round=0; round<9; round++){
-
-    let rotated = teams.slice(1);
-
-    for(let i=0; i<round; i++){
-
-        rotated.push(
-            rotated.shift()
-        );
-
-    }
-
-    const roundTeams = [
-        teams[0],
-        ...rotated
-    ];
-
-
-    for(let i=0; i<5; i++){
-
-        fixtures.push({
-
-            id:fixtureId++,
-
-            matchday:round+1,
-
-            home:roundTeams[i],
-
-            away:roundTeams[9-i],
-
-            homeScore:null,
-
-            awayScore:null
-
-        });
-
-    }
-
-}
-
-
-/* SECOND LEG */
-
-for(let round=0; round<9; round++){
-
-    const firstHalf =
-        fixtures.filter(
-            f => f.matchday === round+1
-        );
-
-
-    firstHalf.forEach(match => {
-
-        fixtures.push({
-
-            id:fixtureId++,
-
-            matchday:round+10,
-
-            home:match.away,
-
-            away:match.home,
-
-            homeScore:null,
-
-            awayScore:null
-
-        });
-
-    });
-
-}
+teams.forEach(team => {
+    teamMap[team.name] = team;
+});
 
 
 /* =========================================================
-   READ RESULTS DIRECTLY FROM HTML
+   READ FIXTURES DIRECTLY FROM HTML
+     
+   IMPORTANT:
+   JavaScript DOES NOT generate or reorder fixtures.
+   
+   The order below is exactly the order written
+   inside #matchResultsData.
 ========================================================= */
 
+const fixtures = [];
+
 document
-.querySelectorAll(
-    "#matchResultsData .match-result"
-)
-.forEach(result => {
+.querySelectorAll("#matchResultsData .match-result")
+.forEach((result,index) => {
 
-    const id =
-        Number(result.dataset.match);
+    const homeName =
+        result.dataset.homeTeam;
 
-    const home =
+    const awayName =
+        result.dataset.awayTeam;
+
+    const homeScore =
         result.dataset.home;
 
-    const away =
+    const awayScore =
         result.dataset.away;
 
+    fixtures.push({
 
-    const match =
-        fixtures.find(
-            fixture => fixture.id === id
-        );
+        id:Number(result.dataset.match),
 
+        order:index + 1,
 
-    if(!match){
+        home:teamMap[homeName],
 
-        return;
+        away:teamMap[awayName],
 
-    }
+        homeScore:
+            homeScore !== ""
+            ? Number(homeScore)
+            : null,
 
+        awayScore:
+            awayScore !== ""
+            ? Number(awayScore)
+            : null
 
-    if(
-        home !== "" &&
-        away !== ""
-    ){
-
-        match.homeScore =
-            Number(home);
-
-        match.awayScore =
-            Number(away);
-
-    }
+    });
 
 });
 
 
 /* =========================================================
    RENDER FIXTURES
+     
+   MATCHES ARE DISPLAYED IN EXACT HTML ORDER.
 ========================================================= */
 
 function renderFixtures(){
@@ -1788,21 +2120,23 @@ function renderFixtures(){
             "fixturesContainer"
         );
 
-
     container.innerHTML = "";
 
 
-    for(let day=1; day<=18; day++){
+    for(let day=1;day<=18;day++){
+
+        const start =
+            (day-1)*5;
 
         const matches =
-            fixtures.filter(
-                f => f.matchday === day
+            fixtures.slice(
+                start,
+                start+5
             );
 
 
         const section =
             document.createElement("div");
-
 
         section.className =
             "matchday";
@@ -1822,7 +2156,6 @@ function renderFixtures(){
 
             </div>
 
-
             <div class="fixtures">
 
                 ${matches.map(match => `
@@ -1830,6 +2163,10 @@ function renderFixtures(){
                     <div class="fixture">
 
                         <div class="fixture-team">
+
+                            <span class="fixture-number">
+                                #${match.id}
+                            </span>
 
                             <img
                                 src="${match.home.logo}"
@@ -1846,10 +2183,15 @@ function renderFixtures(){
                             <strong class="match-score">
 
                                 ${
-                                    match.homeScore !== null
+                                    match.homeScore !== null &&
+                                    match.awayScore !== null
+
                                     ?
+
                                     `${match.homeScore} : ${match.awayScore}`
+
                                     :
+
                                     "VS"
                                 }
 
@@ -1886,7 +2228,7 @@ function renderFixtures(){
 
 
 /* =========================================================
-   CALCULATE TABLE
+   CALCULATE LEAGUE TABLE
 ========================================================= */
 
 function calculate(){
@@ -1901,19 +2243,12 @@ function calculate(){
             ...team,
 
             played:0,
-
             wins:0,
-
             draws:0,
-
             losses:0,
-
             gf:0,
-
             ga:0,
-
             gd:0,
-
             points:0
 
         };
@@ -1947,22 +2282,15 @@ function calculate(){
 
 
         home.played++;
-
         away.played++;
 
 
-        home.gf +=
-            match.homeScore;
-
-        home.ga +=
-            match.awayScore;
+        home.gf += match.homeScore;
+        home.ga += match.awayScore;
 
 
-        away.gf +=
-            match.awayScore;
-
-        away.ga +=
-            match.homeScore;
+        away.gf += match.awayScore;
+        away.ga += match.homeScore;
 
 
         if(
@@ -1971,7 +2299,6 @@ function calculate(){
         ){
 
             home.wins++;
-
             away.losses++;
 
             home.points += 3;
@@ -1984,7 +2311,6 @@ function calculate(){
         ){
 
             away.wins++;
-
             home.losses++;
 
             away.points += 3;
@@ -1994,11 +2320,9 @@ function calculate(){
         else{
 
             home.draws++;
-
             away.draws++;
 
             home.points++;
-
             away.points++;
 
         }
@@ -2006,8 +2330,7 @@ function calculate(){
     });
 
 
-    Object.values(stats)
-    .forEach(team => {
+    Object.values(stats).forEach(team => {
 
         team.gd =
             team.gf - team.ga;
@@ -2024,8 +2347,10 @@ function calculate(){
                 a.points
             ){
 
-                return b.points -
-                       a.points;
+                return (
+                    b.points -
+                    a.points
+                );
 
             }
 
@@ -2035,14 +2360,18 @@ function calculate(){
                 a.gd
             ){
 
-                return b.gd -
-                       a.gd;
+                return (
+                    b.gd -
+                    a.gd
+                );
 
             }
 
 
-            return b.gf -
-                   a.gf;
+            return (
+                b.gf -
+                a.gf
+            );
 
         });
 
@@ -2064,7 +2393,7 @@ function calculate(){
     document.getElementById(
         "remainingCount"
     ).textContent =
-        90 - played;
+        fixtures.length - played;
 
 
     document.getElementById(
@@ -2087,7 +2416,6 @@ function renderStandings(sorted){
         document.getElementById(
             "standingsBody"
         );
-
 
     body.innerHTML = "";
 
@@ -2130,7 +2458,7 @@ function renderStandings(sorted){
 
                             <small
                                 style="
-                                    color:#68757b;
+                                color:#68757b;
                                 "
                             >
                                 ${team.player}
@@ -2195,7 +2523,6 @@ function renderTeamCards(sorted){
             "teamGrid"
         );
 
-
     grid.innerHTML = "";
 
 
@@ -2220,6 +2547,7 @@ function renderTeamCards(sorted){
 
 
                 <div class="team-mini-stats">
+
 
                     <div>
 
@@ -2259,6 +2587,7 @@ function renderTeamCards(sorted){
 
                     </div>
 
+
                 </div>
 
             </div>
@@ -2277,9 +2606,9 @@ function renderTeamCards(sorted){
 function renderTopTeam(sorted){
 
     const top =
-        [...sorted].sort(
-            (a,b) =>
-                b.gf - a.gf
+        [...sorted]
+        .sort((a,b) =>
+            b.gf - a.gf
         )[0];
 
 
@@ -2336,13 +2665,19 @@ function renderTopTeam(sorted){
         ).textContent =
             "0";
 
+
+        document.getElementById(
+            "topTeamLogo"
+        ).src =
+            "";
+
     }
 
 }
 
 
 /* =========================================================
-   INTER MILAN
+   INTER MILAN FIXTURES
 ========================================================= */
 
 function renderInter(){
@@ -2354,12 +2689,16 @@ function renderInter(){
 
 
     const matches =
-        fixtures.filter(
-            f =>
-                f.home.name ===
-                    "Inter Milan" ||
-                f.away.name ===
-                    "Inter Milan"
+        fixtures.filter(match =>
+
+            match.home.name ===
+            "Inter Milan"
+
+            ||
+
+            match.away.name ===
+            "Inter Milan"
+
         );
 
 
@@ -2383,12 +2722,18 @@ function renderInter(){
                 : match.home;
 
 
-            const score =
-                match.homeScore !== null
-                ?
-                `${match.homeScore} - ${match.awayScore}`
-                :
-                "VS";
+            let score = "VS";
+
+
+            if(
+                match.homeScore !== null &&
+                match.awayScore !== null
+            ){
+
+                score =
+                    `${match.homeScore} - ${match.awayScore}`;
+
+            }
 
 
             return `
@@ -2396,6 +2741,10 @@ function renderInter(){
                 <div class="fixture">
 
                     <div class="fixture-team">
+
+                        <span class="fixture-number">
+                            #${match.id}
+                        </span>
 
                         <img
                             src="${team.logo}"
@@ -2410,8 +2759,8 @@ function renderInter(){
                     <div
                         class="match-score"
                         style="
-                            text-align:center;
-                            color:#599aff;
+                        text-align:center;
+                        color:#599aff;
                         "
                     >
 
@@ -2503,7 +2852,7 @@ function renderSemiFinals(sorted){
 
 
 /* =========================================================
-   START WEBSITE
+   START
 ========================================================= */
 
 renderFixtures();
@@ -2516,5 +2865,4 @@ calculate();
 
 
 </body>
-
 </html>
