@@ -18,7 +18,7 @@
 const fixtures = [
 
     // 1
-    { id: 1, home: "nirmal", away: "edwin", hg: null, ag: null },
+    { id: 1, home: "nirmal", away: "edwin", hg: 2, ag: 3 },
 
     // 2
     { id: 2, home: "edwin", away: "nirmal", hg: null, ag: null },
