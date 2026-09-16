@@ -1,0 +1,238 @@
+/* =========================================================
+   HEADER LOGO
+========================================================= */
+
+.logo-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-circle{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+
+    background:
+        linear-gradient(135deg,#00ff88,#00aaff);
+
+    color:#06100d;
+    font-weight:1000;
+
+    box-shadow:
+        0 0 12px rgba(0,255,136,.5),
+        0 0 30px rgba(0,170,255,.2);
+
+    animation:
+        logoPulse 2.5s ease-in-out infinite,
+        logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 10px rgba(0,255,136,.4),
+            0 0 25px rgba(0,170,255,.15);
+    }
+
+    50%{
+        box-shadow:
+            0 0 22px rgba(0,255,136,.8),
+            0 0 45px rgba(0,170,255,.4);
+    }
+}
+
+@keyframes logoFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+}
+
+
+/* =========================================================
+   PSG HEADER LOGO
+========================================================= */
+
+.header-psg{
+    width:46px;
+    height:46px;
+
+    object-fit:contain;
+
+    margin-left:20px;
+
+    filter:
+        drop-shadow(0 0 6px rgba(0,110,255,.7))
+        drop-shadow(0 0 14px rgba(0,110,255,.35));
+
+    animation:
+        psgFloat 3s ease-in-out infinite,
+        psgGlow 2.5s ease-in-out infinite;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.header-psg:hover{
+
+    transform:
+        scale(1.2)
+        rotate(8deg);
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,110,255,1))
+        drop-shadow(0 0 25px rgba(0,110,255,.8));
+}
+
+@keyframes psgFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+@keyframes psgGlow{
+
+    0%,100%{
+        filter:
+            drop-shadow(0 0 5px rgba(0,110,255,.5));
+    }
+
+    50%{
+        filter:
+            drop-shadow(0 0 12px rgba(0,110,255,1))
+            drop-shadow(0 0 25px rgba(0,110,255,.5));
+    }
+}
+
+
+/* =========================================================
+   NAVBAR ANIMATION
+========================================================= */
+
+.navbar{
+
+    animation:
+        navbarSlide .7s ease-out;
+}
+
+@keyframes navbarSlide{
+
+    from{
+        opacity:0;
+        transform:translateY(-25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================================
+   NAVIGATION HOVER EFFECT
+========================================================= */
+
+.nav-links a{
+
+    position:relative;
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+.nav-links a:hover{
+
+    color:#00ff88;
+
+    transform:
+        translateY(-2px);
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    bottom:-8px;
+
+    width:0;
+    height:2px;
+
+    background:#00ff88;
+
+    transform:translateX(-50%);
+
+    transition:
+        width .3s ease;
+
+    box-shadow:
+        0 0 8px #00ff88;
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+}
+
+
+/* =========================================================
+   TITLE GLOW
+========================================================= */
+
+.logo-title h2{
+
+    transition:
+        text-shadow .3s ease,
+        transform .3s ease;
+}
+
+.logo-title:hover h2{
+
+    transform:translateX(3px);
+
+    text-shadow:
+        0 0 8px rgba(0,255,136,.7);
+}
+
+
+/* =========================================================
+   SEASON ANIMATION
+========================================================= */
+
+.logo-title span{
+
+    position:relative;
+
+    animation:
+        seasonPulse 2s ease-in-out infinite;
+}
+
+@keyframes seasonPulse{
+
+    0%,100%{
+        opacity:.65;
+    }
+
+    50%{
+        opacity:1;
+        text-shadow:
+            0 0 10px rgba(0,255,136,.8);
+    }
+}
