@@ -186,7 +186,7 @@ a{
 
 .dashboard-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:16px;
 }
 
@@ -610,6 +610,10 @@ footer{
 
 @media(max-width:900px){
 
+    .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .team-grid{
         grid-template-columns:repeat(2,1fr);
     }
@@ -621,6 +625,19 @@ footer{
 }
 
 @media(max-width:600px){
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .psg-sponsor-text{
+        display:none;
+    }
+
+    .psg-sponsor{
+        padding-left:5px;
+        border-left:0;
+    }
 
     .nav-links{
         display:none;
@@ -669,6 +686,229 @@ footer{
 
 }
 
+
+
+/* =========================================================
+   BEST DEFENCE DASHBOARD CARD
+========================================================= */
+
+.dashboard-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.defence-icon{
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:rgba(0,170,255,.10);
+    border:1px solid rgba(0,170,255,.20);
+    font-size:17px;
+    animation:shieldPulse 2s ease-in-out infinite;
+}
+
+@keyframes shieldPulse{
+    0%,100%{transform:scale(1);box-shadow:0 0 0 rgba(0,170,255,0);}
+    50%{transform:scale(1.08);box-shadow:0 0 18px rgba(0,170,255,.25);}
+}
+
+.defence-content{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-top:12px;
+}
+
+.defence-content img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    display:none;
+    filter:drop-shadow(0 0 7px rgba(0,170,255,.5));
+    animation:defenceLogoFloat 3s ease-in-out infinite;
+}
+
+@keyframes defenceLogoFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-4px);}
+}
+
+.defence-content h3{
+    margin-top:0;
+    font-size:24px;
+    color:#00aaff;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:150px;
+}
+
+.defence-content p{
+    margin-top:3px;
+    color:#87949a;
+    font-size:11px;
+}
+
+.defence-content p strong{
+    color:#00aaff;
+    font-size:13px;
+}
+
+.defence-card{
+    background:linear-gradient(135deg,rgba(0,170,255,.09),rgba(12,20,22,.82));
+    border-color:rgba(0,170,255,.14);
+}
+
+.defence-card:hover{
+    border-color:rgba(0,170,255,.40);
+    box-shadow:0 20px 60px rgba(0,0,0,.45),0 0 25px rgba(0,170,255,.08);
+}
+
+/* =========================================================
+   PSG CHAMPION SPONSOR HEADER
+========================================================= */
+
+.psg-sponsor{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:auto;
+    padding-left:15px;
+    border-left:1px solid rgba(255,255,255,.10);
+}
+
+.psg-sponsor-text{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    line-height:1.1;
+}
+
+.psg-sponsor-text small{
+    color:#6f7d83;
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    white-space:nowrap;
+}
+
+.psg-sponsor-text strong{
+    margin-top:3px;
+    color:#fff;
+    font-size:12px;
+    font-weight:1000;
+    letter-spacing:1px;
+    text-shadow:0 0 8px rgba(0,110,255,.5);
+}
+
+.psg-header-badge{
+    width:50px;
+    height:50px;
+    position:relative;
+    display:grid;
+    place-items:center;
+    flex-shrink:0;
+}
+
+.psg-header-badge img{
+    width:39px;
+    height:39px;
+    object-fit:contain;
+    position:relative;
+    z-index:3;
+    filter:drop-shadow(0 0 6px rgba(0,110,255,.8)) drop-shadow(0 0 14px rgba(0,110,255,.35));
+    animation:psgSponsorFloat 3s ease-in-out infinite;
+    transition:transform .35s ease,filter .35s ease;
+}
+
+.psg-header-badge:hover img{
+    transform:scale(1.18) rotate(7deg);
+    filter:drop-shadow(0 0 10px rgba(0,150,255,1)) drop-shadow(0 0 25px rgba(0,110,255,.8));
+}
+
+@keyframes psgSponsorFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-5px);}
+}
+
+.psg-ring{
+    position:absolute;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid rgba(0,150,255,.45);
+    border-top-color:#00aaff;
+    border-right-color:rgba(0,150,255,.15);
+    box-shadow:0 0 15px rgba(0,120,255,.25);
+    animation:psgRingRotate 5s linear infinite;
+}
+
+@keyframes psgRingRotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+.psg-header-badge::before{
+    content:"";
+    position:absolute;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,110,255,.22),transparent 70%);
+    filter:blur(4px);
+    animation:psgOuterGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes psgOuterGlow{
+    0%,100%{opacity:.45;transform:scale(.9);}
+    50%{opacity:1;transform:scale(1.15);}
+}
+
+.navbar::after{
+    content:"";
+    display:block;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#00ff88,#00aaff,#00ff88,transparent);
+    background-size:300% 100%;
+    animation:headerLine 4s linear infinite;
+    box-shadow:0 0 10px rgba(0,255,136,.6);
+}
+
+@keyframes headerLine{
+    0%{background-position:0% 50%;}
+    100%{background-position:300% 50%;}
+}
+
+
+/* =========================================================
+   UPDATED SCOREBOARD HEADER ANIMATIONS
+========================================================= */
+
+.logo-title{display:flex;align-items:center;gap:12px;}
+.logo-circle{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#00ff88,#00aaff);color:#06100d;font-weight:1000;box-shadow:0 0 12px rgba(0,255,136,.5),0 0 30px rgba(0,170,255,.2);animation:logoPulse 2.5s ease-in-out infinite,logoFloat 3s ease-in-out infinite;}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 10px rgba(0,255,136,.4),0 0 25px rgba(0,170,255,.15);}50%{box-shadow:0 0 22px rgba(0,255,136,.8),0 0 45px rgba(0,170,255,.4);}}
+@keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+.header-psg{width:46px;height:46px;object-fit:contain;margin-left:20px;filter:drop-shadow(0 0 6px rgba(0,110,255,.7)) drop-shadow(0 0 14px rgba(0,110,255,.35));animation:psgFloat 3s ease-in-out infinite,psgGlow 2.5s ease-in-out infinite;transition:transform .35s ease,filter .35s ease;}
+.header-psg:hover{transform:scale(1.2) rotate(8deg);filter:drop-shadow(0 0 8px rgba(0,110,255,1)) drop-shadow(0 0 25px rgba(0,110,255,.8));}
+@keyframes psgFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes psgGlow{0%,100%{filter:drop-shadow(0 0 5px rgba(0,110,255,.5));}50%{filter:drop-shadow(0 0 12px rgba(0,110,255,1)) drop-shadow(0 0 25px rgba(0,110,255,.5));}}
+.navbar{animation:navbarSlide .7s ease-out;}
+@keyframes navbarSlide{from{opacity:0;transform:translateY(-25px);}to{opacity:1;transform:translateY(0);}}
+.nav-links a{position:relative;transition:color .3s ease,transform .3s ease;}
+.nav-links a:hover{color:#00ff88;transform:translateY(-2px);}
+.nav-links a::after{content:"";position:absolute;left:50%;bottom:-8px;width:0;height:2px;background:#00ff88;transform:translateX(-50%);transition:width .3s ease;box-shadow:0 0 8px #00ff88;}
+.nav-links a:hover::after{width:100%;}
+.logo-title h2{transition:text-shadow .3s ease,transform .3s ease;}
+.logo-title:hover h2{transform:translateX(3px);text-shadow:0 0 8px rgba(0,255,136,.7);}
+.logo-title span{position:relative;animation:seasonPulse 2s ease-in-out infinite;}
+@keyframes seasonPulse{0%,100%{opacity:.65;}50%{opacity:1;text-shadow:0 0 10px rgba(0,255,136,.8);}}
+
+@media(max-width:700px){.header-psg{width:38px;height:38px;margin-left:8px}.logo-circle{width:40px;height:40px}.logo-title{gap:8px}.nav-links{gap:12px}.nav-links a{font-size:12px;}}
 </style>
 
 </head>
@@ -712,6 +952,23 @@ footer{
         <a href="#standings">Standings</a>
         <a href="#fixtures">Fixtures</a>
         <a href="#semifinals">Semi Finals</a>
+
+    </div>
+
+    <div class="psg-sponsor">
+
+        <div class="psg-sponsor-text">
+            <small>CHAMPION SPONSOR</small>
+            <strong>PSG</strong>
+        </div>
+
+        <div class="psg-header-badge">
+            <span class="psg-ring"></span>
+            <img
+                src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"
+                alt="PSG Champion Sponsor"
+            >
+        </div>
 
     </div>
 
@@ -806,6 +1063,24 @@ footer{
         <p>
             Based on points
         </p>
+
+    </div>
+
+
+    <div class="dashboard-card defence-card">
+
+        <div class="dashboard-card-top">
+            <span>BEST DEFENCE</span>
+            <div class="defence-icon">🛡</div>
+        </div>
+
+        <div class="defence-content">
+            <img id="defenceLogo" src="" alt="Best Defence">
+            <div>
+                <h3 id="defenceTeam">—</h3>
+                <p><strong id="defenceGoals">0</strong> goals conceded</p>
+            </div>
+        </div>
 
     </div>
 
@@ -2476,6 +2751,68 @@ function calculate(){
         played > 0
         ? sorted[0].name
         : "—";
+
+
+    /* =========================================================
+       BEST DEFENCE
+       Lowest goals conceded (GA)
+    ========================================================= */
+
+    const defenceCandidates =
+        Object.values(stats)
+        .filter(team => team.played > 0);
+
+    const bestDefence =
+        defenceCandidates.length
+        ? defenceCandidates.sort((a,b) => {
+
+            if(a.ga !== b.ga){
+                return a.ga - b.ga;
+            }
+
+            if(b.gd !== a.gd){
+                return b.gd - a.gd;
+            }
+
+            return b.gf - a.gf;
+
+        })[0]
+        : null;
+
+    const defenceTeam =
+        document.getElementById("defenceTeam");
+
+    const defenceGoals =
+        document.getElementById("defenceGoals");
+
+    const defenceLogo =
+        document.getElementById("defenceLogo");
+
+    if(bestDefence){
+
+        defenceTeam.textContent =
+            bestDefence.name;
+
+        defenceGoals.textContent =
+            bestDefence.ga;
+
+        defenceLogo.src =
+            bestDefence.logo;
+
+        defenceLogo.alt =
+            bestDefence.name;
+
+        defenceLogo.style.display =
+            "block";
+
+    }
+    else{
+
+        defenceTeam.textContent = "—";
+        defenceGoals.textContent = "0";
+        defenceLogo.style.display = "none";
+
+    }
 
 }
 
