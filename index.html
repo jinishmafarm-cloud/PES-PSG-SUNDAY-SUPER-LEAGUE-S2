@@ -1,1 +1,1960 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Sunday Super League - Season 2</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> <style> :root{ --bg:#05080a; --panel:#0d1519; --panel2:#111d22; --green:#00ff88; --green2:#00c96b; --gold:#ffd166; --blue:#3185ff; --red:#ff5577; --white:#ffffff; --muted:#84939a; --border:rgba(255,255,255,.09); } *{ margin:0; padding:0; box-sizing:border-box; } html{ scroll-behavior:smooth; } body{ font-family:Inter,Arial,sans-serif; background: radial-gradient(circle at 10% 0%,rgba(0,255,136,.08),transparent 30%), radial-gradient(circle at 90% 10%,rgba(49,133,255,.09),transparent 30%), linear-gradient(135deg,#020405,#071013 50%,#020405); color:white; min-height:100vh; overflow-x:hidden; } /* ===================================================== ANIMATED BACKGROUND ===================================================== */ body:before{ content:""; position:fixed; inset:0; pointer-events:none; background-image: radial-gradient(circle,rgba(255,255,255,.14) 1px,transparent 1px); background-size:70px 70px; opacity:.12; animation:stars 20s linear infinite; z-index:-3; } @keyframes stars{ from{transform:translateY(0)} to{transform:translateY(-70px)} } /* ===================================================== STADIUM LIGHTS ===================================================== */ .stadium-light{ position:fixed; top:-180px; width:500px; height:650px; pointer-events:none; z-index:-2; filter:blur(25px); opacity:.25; background:linear-gradient( 180deg, rgba(255,255,255,.5), rgba(0,255,136,.08), transparent ); clip-path:polygon(40% 0,60% 0,100% 100%,0 100%); animation:beam 6s ease-in-out infinite alternate; } .light-left{ left:-120px; transform:rotate(22deg); } .light-right{ right:-120px; transform:rotate(-22deg); animation-delay:2s; } @keyframes beam{ from{ opacity:.15; transform:rotate(18deg); } to{ opacity:.4; transform:rotate(28deg); } } /* ===================================================== NAVBAR ===================================================== */ .navbar{ position:sticky; top:0; z-index:1000; background:rgba(3,7,9,.82); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); } .nav-inner{ max-width:1450px; margin:auto; padding:14px 25px; display:flex; align-items:center; justify-content:space-between; gap:20px; } .logo-title{ display:flex; align-items:center; gap:12px; } .logo-ball{ width:43px; height:43px; border-radius:13px; display:grid; place-items:center; background:linear-gradient(135deg,var(--green),#00a45b); color:#00140b; font-size:22px; box-shadow:0 0 25px rgba(0,255,136,.25); } .logo-title strong{ font-size:13px; font-weight:900; } .logo-title small{ display:block; color:var(--green); font-size:8px; letter-spacing:2px; margin-top:3px; } .nav-links{ display:flex; gap:6px; flex-wrap:wrap; } .nav-links a{ text-decoration:none; color:#9aa8ae; padding:9px 11px; border-radius:8px; font-size:11px; font-weight:700; transition:.25s; } .nav-links a:hover{ color:white; background:rgba(0,255,136,.08); } /* ===================================================== HERO ===================================================== */ .hero{ max-width:1450px; min-height:440px; margin:auto; padding:70px 25px; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; } .hero-content{ z-index:2; } .hero-badge{ display:inline-block; padding:8px 15px; border:1px solid rgba(0,255,136,.25); background:rgba(0,255,136,.05); border-radius:50px; color:var(--green); font-size:10px; font-weight:900; letter-spacing:1.5px; margin-bottom:22px; animation:glow 2s infinite; } @keyframes glow{ 50%{ box-shadow:0 0 30px rgba(0,255,136,.15); } } .hero h1{ font-size:clamp(45px,7vw,90px); line-height:.9; letter-spacing:-5px; font-weight:900; } .hero h1 span{ display:block; color:var(--green); text-shadow:0 0 30px rgba(0,255,136,.15); } .hero p{ color:var(--muted); margin-top:22px; font-size:13px; } .football{ position:absolute; right:8%; top:100px; font-size:150px; opacity:.08; animation:football 12s linear infinite; } @keyframes football{ to{ transform:rotate(360deg); } } /* ===================================================== MAIN ===================================================== */ .container{ width:min(1450px,calc(100% - 40px)); margin:auto; } .section{ margin:75px 0; } .section-heading{ margin-bottom:22px; } .section-heading h2{ font-size:28px; font-weight:900; } .section-heading p{ color:var(--muted); font-size:11px; margin-top:5px; } /* ===================================================== DASHBOARD ===================================================== */ .dashboard{ display:grid; grid-template-columns:repeat(4,1fr); gap:15px; } .stat{ background:rgba(13,21,25,.8); border:1px solid var(--border); border-radius:18px; padding:23px; backdrop-filter:blur(15px); transition:.3s; position:relative; overflow:hidden; } .stat:hover{ transform:translateY(-5px); border-color:rgba(0,255,136,.25); } .stat:after{ content:""; position:absolute; width:90px; height:90px; right:-40px; bottom:-40px; background:var(--green); filter:blur(50px); opacity:.12; } .stat-label{ color:#7e8b91; font-size:9px; font-weight:800; letter-spacing:1.5px; } .stat-number{ font-size:34px; font-weight:900; margin-top:8px; } .stat-info{ color:var(--green); font-size:10px; margin-top:4px; } /* ===================================================== TOP TEAM ===================================================== */ .top-team{ display:grid; grid-template-columns:1fr 1fr; min-height:320px; overflow:hidden; border:1px solid var(--border); border-radius:24px; background: radial-gradient(circle at 80% 50%,rgba(0,255,136,.08),transparent 35%), rgba(10,17,20,.9); } .top-info{ padding:45px; display:flex; flex-direction:column; justify-content:center; } .top-label{ color:var(--green); font-size:10px; font-weight:900; letter-spacing:2px; } .top-info h2{ font-size:48px; margin:10px 0; } .top-info p{ color:var(--muted); font-size:13px; } .goal-number{ margin-top:20px; font-size:42px; font-weight:900; } .goal-number span{ color:var(--muted); font-size:10px; } .top-logo{ display:grid; place-items:center; position:relative; } .top-logo:before{ content:""; position:absolute; width:250px; height:250px; border-radius:50%; background:var(--green); filter:blur(100px); opacity:.13; } .top-logo img{ width:180px; height:180px; object-fit:contain; position:relative; animation:floatLogo 4s ease-in-out infinite; filter:drop-shadow(0 0 25px rgba(255,255,255,.15)); } @keyframes floatLogo{ 50%{ transform:translateY(-10px) scale(1.04); } } /* ===================================================== TABLE ===================================================== */ .table-wrapper{ overflow-x:auto; background:rgba(13,21,25,.8); border:1px solid var(--border); border-radius:20px; } table{ width:100%; min-width:850px; border-collapse:collapse; } th{ padding:16px; color:#718087; font-size:9px; letter-spacing:1px; text-align:left; border-bottom:1px solid var(--border); } td{ padding:13px 16px; font-size:12px; font-weight:600; border-bottom:1px solid rgba(255,255,255,.04); } tr{ transition:.25s; } tr:hover{ background:rgba(0,255,136,.035); } .top-four{ border-left:3px solid var(--green); background:rgba(0,255,136,.025); } .team-name{ display:flex; align-items:center; gap:10px; } .team-name img{ width:34px; height:34px; object-fit:contain; } .team-name small{ color:#68767d; display:block; margin-top:2px; } .pts{ color:var(--green); font-size:15px; font-weight:900; } /* ===================================================== TEAMS ===================================================== */ .team-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:15px; } .team-card{ padding:22px; text-align:center; background:rgba(13,21,25,.78); border:1px solid var(--border); border-radius:20px; transition:.3s; } .team-card:hover{ transform:translateY(-7px); border-color:rgba(0,255,136,.25); box-shadow:0 20px 50px rgba(0,0,0,.3); } .team-card img{ width:72px; height:72px; object-fit:contain; margin-bottom:12px; transition:.3s; } .team-card:hover img{ transform:scale(1.1); } .team-card h3{ font-size:14px; } .team-card p{ color:var(--green); font-size:9px; margin-top:5px; } .card-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:16px; } .card-stats div{ padding:7px 2px; background:rgba(255,255,255,.035); border-radius:7px; } .card-stats b{ display:block; font-size:12px; } .card-stats span{ font-size:7px; color:#69777d; } /* ===================================================== MATCHDAY ===================================================== */ .matchday{ margin-bottom:35px; } .matchday-header{ display:flex; align-items:center; gap:10px; margin-bottom:10px; } .matchday-header span{ background:rgba(0,255,136,.08); color:var(--green); border:1px solid rgba(0,255,136,.15); padding:7px 11px; border-radius:7px; font-size:9px; font-weight:900; } .matchday-header h3{ font-size:14px; } /* ===================================================== FIXTURE ===================================================== */ .fixture{ display:grid; grid-template-columns:1fr 180px 1fr; align-items:center; gap:15px; padding:15px 18px; margin-bottom:7px; background:rgba(13,21,25,.82); border:1px solid var(--border); border-radius:14px; transition:.25s; } .fixture:hover{ border-color:rgba(0,255,136,.22); background:rgba(17,27,31,.95); transform:translateX(2px); } .fixture-team{ display:flex; align-items:center; gap:10px; font-size:12px; font-weight:700; } .fixture-team.away{ justify-content:flex-end; } .fixture-team img{ width:35px; height:35px; object-fit:contain; } .player{ display:block; color:#64737a; font-size:8px; margin-top:3px; } .score-area{ display:flex; justify-content:center; align-items:center; gap:5px; } .score-input{ width:38px; height:36px; border-radius:8px; border:1px solid #26363c; background:#05090b; color:white; text-align:center; font-weight:900; outline:none; } .score-input:focus{ border-color:var(--green); box-shadow:0 0 15px rgba(0,255,136,.15); } .score-area span{ color:#68767c; font-weight:900; } .save-btn{ height:36px; padding:0 10px; border:none; border-radius:8px; background:var(--green); color:#00150c; font-size:8px; font-weight:900; cursor:pointer; transition:.2s; } .save-btn:hover{ transform:scale(1.05); box-shadow:0 0 20px rgba(0,255,136,.25); } .saved{ animation:saved .5s ease; } @keyframes saved{ 50%{ box-shadow:0 0 30px rgba(0,255,136,.5); } } /* ===================================================== INTER ===================================================== */ .inter-box{ padding:30px; border:1px solid rgba(49,133,255,.22); border-radius:25px; background: radial-gradient(circle at 90% 20%,rgba(49,133,255,.12),transparent 30%), rgba(7,13,18,.9); } .inter-title{ display:flex; align-items:center; gap:15px; margin-bottom:25px; } .inter-title img{ width:60px; height:60px; object-fit:contain; } .inter-title h2{ font-size:26px; } .inter-title p{ color:#5f99ff; font-size:10px; margin-top:4px; } /* ===================================================== SEMI FINALS ===================================================== */ .semi-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; } .semi-card{ padding:25px; border:1px solid rgba(255,209,102,.14); border-radius:20px; background: radial-gradient(circle at 50% 0%,rgba(255,209,102,.08),transparent 40%), rgba(13,19,22,.9); } .semi-title{ color:var(--gold); font-size:10px; letter-spacing:2px; font-weight:900; margin-bottom:15px; } .semi-team{ display:flex; align-items:center; justify-content:space-between; padding:12px; margin:6px 0; border-radius:10px; background:rgba(255,255,255,.035); } .semi-team div{ display:flex; align-items:center; gap:10px; } .semi-team img{ width:38px; height:38px; object-fit:contain; } .semi-team strong{ color:var(--gold); } /* ===================================================== STATISTICS ===================================================== */ .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:15px; } .stat-box{ padding:22px; border-radius:18px; border:1px solid var(--border); background:rgba(13,21,25,.8); } .stat-box h4{ color:#75838a; font-size:9px; letter-spacing:1px; } .stat-box strong{ display:block; font-size:19px; margin-top:10px; } .stat-box span{ display:block; color:var(--green); font-size:10px; margin-top:5px; } /* ===================================================== FOOTER ===================================================== */ footer{ margin-top:100px; padding:35px 20px; text-align:center; border-top:1px solid var(--border); color:#65737a; font-size:10px; } footer strong{ color:var(--green); } /* ===================================================== RESPONSIVE ===================================================== */ @media(max-width:1050px){ .dashboard{ grid-template-columns:repeat(2,1fr); } .team-grid{ grid-template-columns:repeat(3,1fr); } .stats-grid{ grid-template-columns:repeat(2,1fr); } } @media(max-width:750px){ .nav-inner{ flex-direction:column; } .hero{ min-height:390px; } .hero h1{ font-size:50px; letter-spacing:-3px; } .football{ right:50%; transform:translateX(50%); } .top-team{ grid-template-columns:1fr; } .top-logo{ min-height:230px; } .team-grid{ grid-template-columns:repeat(2,1fr); } .semi-grid{ grid-template-columns:1fr; } .fixture{ grid-template-columns:1fr; text-align:center; } .fixture-team, .fixture-team.away{ justify-content:center; } .score-area{ order:3; } } @media(max-width:500px){ .container{ width:calc(100% - 22px); } .dashboard{ grid-template-columns:1fr 1fr; } .stat{ padding:16px; } .stat-number{ font-size:25px; } .team-grid{ grid-template-columns:1fr 1fr; } .stats-grid{ grid-template-columns:1fr 1fr; } .hero h1{ font-size:43px; } } </style> </head> <body> <div class="stadium-light light-left"></div> <div class="stadium-light light-right"></div> <!-- ===================================================== NAVIGATION ===================================================== --> <nav class="navbar"> <div class="nav-inner"> <div class="logo-title"> <div class="logo-ball">⚽</div> <div> <strong>SUNDAY SUPER LEAGUE</strong> <small>SEASON 2</small> </div> </div> <div class="nav-links"> <a href="#dashboard">Dashboard</a> <a href="#standings">Standings</a> <a href="#teams">Teams</a> <a href="#fixtures">Fixtures</a> <a href="#inter">Inter</a> <a href="#statistics">Stats</a> <a href="#semifinals">Semi-Finals</a> </div> </div> </nav> <!-- ===================================================== HERO ===================================================== --> <header class="hero"> <div class="hero-content"> <div class="hero-badge"> 🏆 10 TEAMS • 90 MATCHES • TOP 4 QUALIFY </div> <h1> SUNDAY <span>SUPER LEAGUE</span> </h1> <p> Season 2 • Double Round Robin • Road to the Semi-Finals </p> </div> <div class="football">⚽</div> </header> <main class="container"> <!-- ===================================================== DASHBOARD ===================================================== --> <section id="dashboard" class="dashboard"> <div class="stat"> <div class="stat-label">TOTAL MATCHES</div> <div class="stat-number">90</div> <div class="stat-info">18 Matchdays</div> </div> <div class="stat"> <div class="stat-label">MATCHES PLAYED</div> <div class="stat-number" id="played">0</div> <div class="stat-info">Results entered</div> </div> <div class="stat"> <div class="stat-label">REMAINING</div> <div class="stat-number" id="remaining">90</div> <div class="stat-info">Fixtures pending</div> </div> <div class="stat"> <div class="stat-label">LEAGUE LEADER</div> <div class="stat-number" id="leader">—</div> <div class="stat-info">Current first place</div> </div> </section> <!-- ===================================================== TOP SCORING TEAM ===================================================== --> <section class="section"> <div class="section-heading"> <h2>🔥 Top Scoring Team</h2> <p>Automatically updated from entered results</p> </div> <div class="top-team"> <div class="top-info"> <div class="top-label">MOST GOALS SCORED</div> <h2 id="topName">No Results</h2> <p id="topPlayer"> Enter results below to update this section. </p> <div class="goal-number"> <span id="topGoals">0</span> <span> GOALS</span> </div> </div> <div class="top-logo"> <img id="topLogo" src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Team"> </div> </div> </section> <!-- ===================================================== STANDINGS ===================================================== --> <section id="standings" class="section"> <div class="section-heading"> <h2>📊 League Table</h2> <p>Green zone = semi-final qualification</p> </div> <div class="table-wrapper"> <table> <thead> <tr> <th>POS</th> <th>TEAM</th> <th>P</th> <th>W</th> <th>D</th> <th>L</th> <th>GF</th> <th>GA</th> <th>GD</th> <th>PTS</th> </tr> </thead> <tbody id="tableBody"></tbody> </table> </div> </section> <!-- ===================================================== TEAM CARDS ===================================================== --> <section id="teams" class="section"> <div class="section-heading"> <h2>⚽ Teams</h2> <p>All tournament participants</p> </div> <div class="team-grid" id="teamGrid"></div> </section> <!-- ===================================================== ALL 90 FIXTURES ===================================================== --> <section id="fixtures" class="section"> <div class="section-heading"> <h2>📅 All Fixtures</h2> <p>All 90 matches are directly available below for score entry</p> </div> <!-- ===================================================== MATCHDAY 1 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 01</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="1"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h1" type="number" min="0"> <span>:</span> <input class="score-input" id="a1" type="number" min="0"> <button class="save-btn" onclick="save(1)">SAVE</button> </div> <div class="fixture-team away"> <div>Edwin<span class="player">Bayern München</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> </div> </div> <div class="fixture" data-id="2"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h2" type="number" min="0"> <span>:</span> <input class="score-input" id="a2" type="number" min="0"> <button class="save-btn" onclick="save(2)">SAVE</button> </div> <div class="fixture-team away"> <div>Amal<span class="player">PSG</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> </div> </div> <div class="fixture" data-id="3"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h3" type="number" min="0"> <span>:</span> <input class="score-input" id="a3" type="number" min="0"> <button class="save-btn" onclick="save(3)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="4"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> <div>THALA<span class="player">Inter Milan</span></div> </div> <div class="score-area"> <input class="score-input" id="h4" type="number" min="0"> <span>:</span> <input class="score-input" id="a4" type="number" min="0"> <button class="save-btn" onclick="save(4)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="5"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> <div>Alen T<span class="player">Brazil</span></div> </div> <div class="score-area"> <input class="score-input" id="h5" type="number" min="0"> <span>:</span> <input class="score-input" id="a5" type="number" min="0"> <button class="save-btn" onclick="save(5)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 2 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 02</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="6"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h6" type="number" min="0"> <span>:</span> <input class="score-input" id="a6" type="number" min="0"> <button class="save-btn" onclick="save(6)">SAVE</button> </div> <div class="fixture-team away"> <div>Dino<span class="player">Real Madrid</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> </div> </div> <div class="fixture" data-id="7"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h7" type="number" min="0"> <span>:</span> <input class="score-input" id="a7" type="number" min="0"> <button class="save-btn" onclick="save(7)">SAVE</button> </div> <div class="fixture-team away"> <div>Aman<span class="player">Monaco FC</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> </div> </div> <div class="fixture" data-id="8"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h8" type="number" min="0"> <span>:</span> <input class="score-input" id="a8" type="number" min="0"> <button class="save-btn" onclick="save(8)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="9"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> <div>Prince<span class="player">BVB</span></div> </div> <div class="score-area"> <input class="score-input" id="h9" type="number" min="0"> <span>:</span> <input class="score-input" id="a9" type="number" min="0"> <button class="save-btn" onclick="save(9)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="10"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> <div>Jinish<span class="player">Manchester United</span></div> </div> <div class="score-area"> <input class="score-input" id="h10" type="number" min="0"> <span>:</span> <input class="score-input" id="a10" type="number" min="0"> <button class="save-btn" onclick="save(10)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 3 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 03</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="11"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h11" type="number" min="0"> <span>:</span> <input class="score-input" id="a11" type="number" min="0"> <button class="save-btn" onclick="save(11)">SAVE</button> </div> <div class="fixture-team away"> <div>Aman<span class="player">Monaco FC</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> </div> </div> <div class="fixture" data-id="12"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h12" type="number" min="0"> <span>:</span> <input class="score-input" id="a12" type="number" min="0"> <button class="save-btn" onclick="save(12)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="13"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h13" type="number" min="0"> <span>:</span> <input class="score-input" id="a13" type="number" min="0"> <button class="save-btn" onclick="save(13)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="14"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h14" type="number" min="0"> <span>:</span> <input class="score-input" id="a14" type="number" min="0"> <button class="save-btn" onclick="save(14)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="15"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h15" type="number" min="0"> <span>:</span> <input class="score-input" id="a15" type="number" min="0"> <button class="save-btn" onclick="save(15)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 4 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 04</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="16"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h16" type="number" min="0"> <span>:</span> <input class="score-input" id="a16" type="number" min="0"> <button class="save-btn" onclick="save(16)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="17"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h17" type="number" min="0"> <span>:</span> <input class="score-input" id="a17" type="number" min="0"> <button class="save-btn" onclick="save(17)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="18"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h18" type="number" min="0"> <span>:</span> <input class="score-input" id="a18" type="number" min="0"> <button class="save-btn" onclick="save(18)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="19"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h19" type="number" min="0"> <span>:</span> <input class="score-input" id="a19" type="number" min="0"> <button class="save-btn" onclick="save(19)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="20"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h20" type="number" min="0"> <span>:</span> <input class="score-input" id="a20" type="number" min="0"> <button class="save-btn" onclick="save(20)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 5 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 05</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="21"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h21" type="number" min="0"> <span>:</span> <input class="score-input" id="a21" type="number" min="0"> <button class="save-btn" onclick="save(21)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="22"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h22" type="number" min="0"> <span>:</span> <input class="score-input" id="a22" type="number" min="0"> <button class="save-btn" onclick="save(22)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="23"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h23" type="number" min="0"> <span>:</span> <input class="score-input" id="a23" type="number" min="0"> <button class="save-btn" onclick="save(23)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="24"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h24" type="number" min="0"> <span>:</span> <input class="score-input" id="a24" type="number" min="0"> <button class="save-btn" onclick="save(24)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="25"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h25" type="number" min="0"> <span>:</span> <input class="score-input" id="a25" type="number" min="0"> <button class="save-btn" onclick="save(25)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 6 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 06</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="26"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h26" type="number" min="0"> <span>:</span> <input class="score-input" id="a26" type="number" min="0"> <button class="save-btn" onclick="save(26)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="27"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h27" type="number" min="0"> <span>:</span> <input class="score-input" id="a27" type="number" min="0"> <button class="save-btn" onclick="save(27)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="28"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h28" type="number" min="0"> <span>:</span> <input class="score-input" id="a28" type="number" min="0"> <button class="save-btn" onclick="save(28)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="29"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h29" type="number" min="0"> <span>:</span> <input class="score-input" id="a29" type="number" min="0"> <button class="save-btn" onclick="save(29)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="30"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h30" type="number" min="0"> <span>:</span> <input class="score-input" id="a30" type="number" min="0"> <button class="save-btn" onclick="save(30)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 7 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 07</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="31"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h31" type="number" min="0"> <span>:</span> <input class="score-input" id="a31" type="number" min="0"> <button class="save-btn" onclick="save(31)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="32"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h32" type="number" min="0"> <span>:</span> <input class="score-input" id="a32" type="number" min="0"> <button class="save-btn" onclick="save(32)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="33"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h33" type="number" min="0"> <span>:</span> <input class="score-input" id="a33" type="number" min="0"> <button class="save-btn" onclick="save(33)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="34"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h34" type="number" min="0"> <span>:</span> <input class="score-input" id="a34" type="number" min="0"> <button class="save-btn" onclick="save(34)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="35"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h35" type="number" min="0"> <span>:</span> <input class="score-input" id="a35" type="number" min="0"> <button class="save-btn" onclick="save(35)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 8 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 08</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="36"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h36" type="number" min="0"> <span>:</span> <input class="score-input" id="a36" type="number" min="0"> <button class="save-btn" onclick="save(36)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="37"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h37" type="number" min="0"> <span>:</span> <input class="score-input" id="a37" type="number" min="0"> <button class="save-btn" onclick="save(37)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="38"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h38" type="number" min="0"> <span>:</span> <input class="score-input" id="a38" type="number" min="0"> <button class="save-btn" onclick="save(38)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="39"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h39" type="number" min="0"> <span>:</span> <input class="score-input" id="a39" type="number" min="0"> <button class="save-btn" onclick="save(39)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="40"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h40" type="number" min="0"> <span>:</span> <input class="score-input" id="a40" type="number" min="0"> <button class="save-btn" onclick="save(40)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 9 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 09</span> <h3>League Fixtures</h3> </div> <div class="fixture" data-id="41"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h41" type="number" min="0"> <span>:</span> <input class="score-input" id="a41" type="number" min="0"> <button class="save-btn" onclick="save(41)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="42"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h42" type="number" min="0"> <span>:</span> <input class="score-input" id="a42" type="number" min="0"> <button class="save-btn" onclick="save(42)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="43"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h43" type="number" min="0"> <span>:</span> <input class="score-input" id="a43" type="number" min="0"> <button class="save-btn" onclick="save(43)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="44"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h44" type="number" min="0"> <span>:</span> <input class="score-input" id="a44" type="number" min="0"> <button class="save-btn" onclick="save(44)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="45"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h45" type="number" min="0"> <span>:</span> <input class="score-input" id="a45" type="number" min="0"> <button class="save-btn" onclick="save(45)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 10 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 10</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="46"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h46" type="number" min="0"> <span>:</span> <input class="score-input" id="a46" type="number" min="0"> <button class="save-btn" onclick="save(46)">SAVE</button> </div> <div class="fixture-team away"> <div>Nirmal<span class="player">Barcelona</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> </div> </div> <div class="fixture" data-id="47"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h47" type="number" min="0"> <span>:</span> <input class="score-input" id="a47" type="number" min="0"> <button class="save-btn" onclick="save(47)">SAVE</button> </div> <div class="fixture-team away"> <div>Edwin<span class="player">Bayern München</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> </div> </div> <div class="fixture" data-id="48"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h48" type="number" min="0"> <span>:</span> <input class="score-input" id="a48" type="number" min="0"> <button class="save-btn" onclick="save(48)">SAVE</button> </div> <div class="fixture-team away"> <div>Amal<span class="player">PSG</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> </div> </div> <div class="fixture" data-id="49"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> <div>Prince<span class="player">BVB</span></div> </div> <div class="score-area"> <input class="score-input" id="h49" type="number" min="0"> <span>:</span> <input class="score-input" id="a49" type="number" min="0"> <button class="save-btn" onclick="save(49)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="50"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> <div>Jinish<span class="player">Manchester United</span></div> </div> <div class="score-area"> <input class="score-input" id="h50" type="number" min="0"> <span>:</span> <input class="score-input" id="a50" type="number" min="0"> <button class="save-btn" onclick="save(50)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 11 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 11</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="51"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h51" type="number" min="0"> <span>:</span> <input class="score-input" id="a51" type="number" min="0"> <button class="save-btn" onclick="save(51)">SAVE</button> </div> <div class="fixture-team away"> <div>Nirmal<span class="player">Barcelona</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> </div> </div> <div class="fixture" data-id="52"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h52" type="number" min="0"> <span>:</span> <input class="score-input" id="a52" type="number" min="0"> <button class="save-btn" onclick="save(52)">SAVE</button> </div> <div class="fixture-team away"> <div>Edwin<span class="player">Bayern München</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> </div> </div> <div class="fixture" data-id="53"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h53" type="number" min="0"> <span>:</span> <input class="score-input" id="a53" type="number" min="0"> <button class="save-btn" onclick="save(53)">SAVE</button> </div> <div class="fixture-team away"> <div>Dino<span class="player">Real Madrid</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> </div> </div> <div class="fixture" data-id="54"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> <div>Prince<span class="player">BVB</span></div> </div> <div class="score-area"> <input class="score-input" id="h54" type="number" min="0"> <span>:</span> <input class="score-input" id="a54" type="number" min="0"> <button class="save-btn" onclick="save(54)">SAVE</button> </div> <div class="fixture-team away"> <div>Aman<span class="player">Monaco FC</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> </div> </div> <div class="fixture" data-id="55"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> <div>THALA<span class="player">Inter Milan</span></div> </div> <div class="score-area"> <input class="score-input" id="h55" type="number" min="0"> <span>:</span> <input class="score-input" id="a55" type="number" min="0"> <button class="save-btn" onclick="save(55)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 12 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 12</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="56"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h56" type="number" min="0"> <span>:</span> <input class="score-input" id="a56" type="number" min="0"> <button class="save-btn" onclick="save(56)">SAVE</button> </div> <div class="fixture-team away"> <div>Amal<span class="player">PSG</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> </div> </div> <div class="fixture" data-id="57"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h57" type="number" min="0"> <span>:</span> <input class="score-input" id="a57" type="number" min="0"> <button class="save-btn" onclick="save(57)">SAVE</button> </div> <div class="fixture-team away"> <div>Aman<span class="player">Monaco FC</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> </div> </div> <div class="fixture" data-id="58"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h58" type="number" min="0"> <span>:</span> <input class="score-input" id="a58" type="number" min="0"> <button class="save-btn" onclick="save(58)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="59"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h59" type="number" min="0"> <span>:</span> <input class="score-input" id="a59" type="number" min="0"> <button class="save-btn" onclick="save(59)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="60"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> <div>THALA<span class="player">Inter Milan</span></div> </div> <div class="score-area"> <input class="score-input" id="h60" type="number" min="0"> <span>:</span> <input class="score-input" id="a60" type="number" min="0"> <button class="save-btn" onclick="save(60)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 13 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 13</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="61"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h61" type="number" min="0"> <span>:</span> <input class="score-input" id="a61" type="number" min="0"> <button class="save-btn" onclick="save(61)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="62"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h62" type="number" min="0"> <span>:</span> <input class="score-input" id="a62" type="number" min="0"> <button class="save-btn" onclick="save(62)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="63"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h63" type="number" min="0"> <span>:</span> <input class="score-input" id="a63" type="number" min="0"> <button class="save-btn" onclick="save(63)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="64"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h64" type="number" min="0"> <span>:</span> <input class="score-input" id="a64" type="number" min="0"> <button class="save-btn" onclick="save(64)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="65"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h65" type="number" min="0"> <span>:</span> <input class="score-input" id="a65" type="number" min="0"> <button class="save-btn" onclick="save(65)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 14 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 14</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="66"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h66" type="number" min="0"> <span>:</span> <input class="score-input" id="a66" type="number" min="0"> <button class="save-btn" onclick="save(66)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="67"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h67" type="number" min="0"> <span>:</span> <input class="score-input" id="a67" type="number" min="0"> <button class="save-btn" onclick="save(67)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="68"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h68" type="number" min="0"> <span>:</span> <input class="score-input" id="a68" type="number" min="0"> <button class="save-btn" onclick="save(68)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="69"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h69" type="number" min="0"> <span>:</span> <input class="score-input" id="a69" type="number" min="0"> <button class="save-btn" onclick="save(69)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="70"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h70" type="number" min="0"> <span>:</span> <input class="score-input" id="a70" type="number" min="0"> <button class="save-btn" onclick="save(70)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 15 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 15</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="71"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h71" type="number" min="0"> <span>:</span> <input class="score-input" id="a71" type="number" min="0"> <button class="save-btn" onclick="save(71)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="72"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h72" type="number" min="0"> <span>:</span> <input class="score-input" id="a72" type="number" min="0"> <button class="save-btn" onclick="save(72)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="73"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h73" type="number" min="0"> <span>:</span> <input class="score-input" id="a73" type="number" min="0"> <button class="save-btn" onclick="save(73)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="74"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h74" type="number" min="0"> <span>:</span> <input class="score-input" id="a74" type="number" min="0"> <button class="save-btn" onclick="save(74)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="75"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h75" type="number" min="0"> <span>:</span> <input class="score-input" id="a75" type="number" min="0"> <button class="save-btn" onclick="save(75)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 16 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 16</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="76"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h76" type="number" min="0"> <span>:</span> <input class="score-input" id="a76" type="number" min="0"> <button class="save-btn" onclick="save(76)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="77"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h77" type="number" min="0"> <span>:</span> <input class="score-input" id="a77" type="number" min="0"> <button class="save-btn" onclick="save(77)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="78"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h78" type="number" min="0"> <span>:</span> <input class="score-input" id="a78" type="number" min="0"> <button class="save-btn" onclick="save(78)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="79"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h79" type="number" min="0"> <span>:</span> <input class="score-input" id="a79" type="number" min="0"> <button class="save-btn" onclick="save(79)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="80"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h80" type="number" min="0"> <span>:</span> <input class="score-input" id="a80" type="number" min="0"> <button class="save-btn" onclick="save(80)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 17 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 17</span> <h3>Return Fixtures</h3> </div> <div class="fixture" data-id="81"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h81" type="number" min="0"> <span>:</span> <input class="score-input" id="a81" type="number" min="0"> <button class="save-btn" onclick="save(81)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="82"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h82" type="number" min="0"> <span>:</span> <input class="score-input" id="a82" type="number" min="0"> <button class="save-btn" onclick="save(82)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="83"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h83" type="number" min="0"> <span>:</span> <input class="score-input" id="a83" type="number" min="0"> <button class="save-btn" onclick="save(83)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="84"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h84" type="number" min="0"> <span>:</span> <input class="score-input" id="a84" type="number" min="0"> <button class="save-btn" onclick="save(84)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> <div class="fixture" data-id="85"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h85" type="number" min="0"> <span>:</span> <input class="score-input" id="a85" type="number" min="0"> <button class="save-btn" onclick="save(85)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> </div> <!-- ===================================================== MATCHDAY 18 ===================================================== --> <div class="matchday"> <div class="matchday-header"> <span>MATCHDAY 18</span> <h3>Final League Matchday</h3> </div> <div class="fixture" data-id="86"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"> <div>Nirmal<span class="player">Barcelona</span></div> </div> <div class="score-area"> <input class="score-input" id="h86" type="number" min="0"> <span>:</span> <input class="score-input" id="a86" type="number" min="0"> <button class="save-btn" onclick="save(86)">SAVE</button> </div> <div class="fixture-team away"> <div>Alen T<span class="player">Brazil</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"> </div> </div> <div class="fixture" data-id="87"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"> <div>Edwin<span class="player">Bayern München</span></div> </div> <div class="score-area"> <input class="score-input" id="h87" type="number" min="0"> <span>:</span> <input class="score-input" id="a87" type="number" min="0"> <button class="save-btn" onclick="save(87)">SAVE</button> </div> <div class="fixture-team away"> <div>Jinish<span class="player">Manchester United</span></div> <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"> </div> </div> <div class="fixture" data-id="88"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"> <div>Dino<span class="player">Real Madrid</span></div> </div> <div class="score-area"> <input class="score-input" id="h88" type="number" min="0"> <span>:</span> <input class="score-input" id="a88" type="number" min="0"> <button class="save-btn" onclick="save(88)">SAVE</button> </div> <div class="fixture-team away"> <div>Anil<span class="player">Norway</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"> </div> </div> <div class="fixture" data-id="89"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"> <div>Amal<span class="player">PSG</span></div> </div> <div class="score-area"> <input class="score-input" id="h89" type="number" min="0"> <span>:</span> <input class="score-input" id="a89" type="number" min="0"> <button class="save-btn" onclick="save(89)">SAVE</button> </div> <div class="fixture-team away"> <div>Prince<span class="player">BVB</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"> </div> </div> <div class="fixture" data-id="90"> <div class="fixture-team"> <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"> <div>Aman<span class="player">Monaco FC</span></div> </div> <div class="score-area"> <input class="score-input" id="h90" type="number" min="0"> <span>:</span> <input class="score-input" id="a90" type="number" min="0"> <button class="save-btn" onclick="save(90)">SAVE</button> </div> <div class="fixture-team away"> <div>THALA<span class="player">Inter Milan</span></div> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> </div> </div> </div> <!-- ===================================================== STATISTICS ===================================================== --> <section id="statistics" class="section"> <div class="section-heading"> <h2>📈 Tournament Statistics</h2> <p>Live statistics from all entered results</p> </div> <div class="stats-grid"> <div class="stat-box"> <h4>MOST GOALS SCORED</h4> <strong id="mostGF">—</strong> <span id="mostGFValue">0 goals</span> </div> <div class="stat-box"> <h4>MOST GOALS CONCEDED</h4> <strong id="mostGA">—</strong> <span id="mostGAValue">0 goals</span> </div> <div class="stat-box"> <h4>LOWEST GOALS CONCEDED</h4> <strong id="lowestGA">—</strong> <span id="lowestGAValue">0 goals</span> </div> <div class="stat-box"> <h4>BEST GOAL DIFFERENCE</h4> <strong id="bestGD">—</strong> <span id="bestGDValue">0 GD</span> </div> </div> </section> <!-- ===================================================== INTER MILAN ===================================================== --> <section id="inter" class="section"> <div class="section-heading"> <h2>🔵⚫ Inter Milan</h2> <p>THALA • All Inter Milan fixtures</p> </div> <div class="inter-box"> <div class="inter-title"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"> <div> <h2>INTER MILAN</h2> <p>THALA • 18 MATCHES</p> </div> </div> <p style="color:#7e8b91;font-size:12px;"> Inter Milan fixtures are included in the main fixture list above. Use the navigation to jump between sections. </p> </div> </section> <!-- ===================================================== SEMI FINALS ===================================================== --> <section id="semifinals" class="section"> <div class="section-heading"> <h2>🏆 Semi-Finals</h2> <p>Top 4 teams qualify automatically</p> </div> <div class="semi-grid"> <div class="semi-card"> <div class="semi-title"> SEMI-FINAL 1 </div> <div class="semi-team"> <div> <img id="s1aLogo"> <span id="s1a">1st Place</span> </div> <strong>1</strong> </div> <div class="semi-team"> <div> <img id="s1bLogo"> <span id="s1b">4th Place</span> </div> <strong>4</strong> </div> </div> <div class="semi-card"> <div class="semi-title"> SEMI-FINAL 2 </div> <div class="semi-team"> <div> <img id="s2aLogo"> <span id="s2a">2nd Place</span> </div> <strong>2</strong> </div> <div class="semi-team"> <div> <img id="s2bLogo"> <span id="s2b">3rd Place</span> </div> <strong>3</strong> </div> </div> </div> </section> </main> <footer> <strong>SUNDAY SUPER LEAGUE</strong> <br><br> Season 2 • 10 Players • 90 Matches • Top 4 Semi-Final Qualification </footer> <script> /* ========================================================= TEAM INFORMATION ========================================================= */ const teams = { "Barcelona":{ player:"Nirmal", logo:"https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" }, "Bayern München":{ player:"Edwin", logo:"https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg" }, "Real Madrid":{ player:"Dino", logo:"https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" }, "PSG":{ player:"Amal", logo:"https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" }, "Monaco FC":{ player:"Aman", logo:"https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg" }, "BVB":{ player:"Prince", logo:"https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg" }, "Inter Milan":{ player:"THALA", logo:"https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg" }, "Manchester United":{ player:"Jinish", logo:"https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" }, "Brazil":{ player:"Alen T", logo:"https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" }, "Norway":{ player:"Anil", logo:"https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" } }; /* ========================================================= FIXTURE DATA The 90 fixtures are already in the HTML. ========================================================= */ const fixtureData = [ ["Barcelona","Bayern München"], ["Real Madrid","PSG"], ["Monaco FC","BVB"], ["Inter Milan","Manchester United"], ["Brazil","Norway"], ["Barcelona","Real Madrid"], ["Bayern München","Monaco FC"], ["PSG","Inter Milan"], ["BVB","Brazil"], ["Manchester United","Norway"], ["Barcelona","Monaco FC"], ["Bayern München","BVB"], ["Real Madrid","Inter Milan"], ["PSG","Brazil"], ["Monaco FC","Manchester United"], ["Barcelona","BVB"], ["Bayern München","Inter Milan"], ["Real Madrid","Brazil"], ["PSG","Manchester United"], ["Monaco FC","Norway"], ["Barcelona","Inter Milan"], ["Bayern München","Brazil"], ["Real Madrid","Manchester United"], ["PSG","Norway"], ["Monaco FC","BVB"], ["Barcelona","Brazil"], ["Bayern München","Manchester United"], ["Real Madrid","Norway"], ["PSG","BVB"], ["Monaco FC","Inter Milan"], ["Barcelona","Manchester United"], ["Bayern München","Norway"], ["Real Madrid","BVB"], ["PSG","Inter Milan"], ["Monaco FC","Brazil"], ["Barcelona","Norway"], ["Bayern München","Inter Milan"], ["Real Madrid","Brazil"], ["PSG","Manchester United"], ["Monaco FC","BVB"], ["Barcelona","Brazil"], ["Bayern München","Manchester United"], ["Real Madrid","Norway"], ["PSG","BVB"], ["Monaco FC","Inter Milan"], ["Bayern München","Barcelona"], ["Real Madrid","Bayern München"], ["Monaco FC","PSG"], ["BVB","Inter Milan"], ["Manchester United","Brazil"], ["Real Madrid","Barcelona"], ["Monaco FC","Bayern München"], ["PSG","Real Madrid"], ["BVB","Monaco FC"], ["Inter Milan","Manchester United"], ["PSG","Barcelona"], ["Monaco FC","Bayern München"], ["BVB","Real Madrid"], ["Brazil","PSG"], ["Inter Milan","Norway"], ["BVB","Barcelona"], ["Inter Milan","Bayern München"], ["Brazil","Real Madrid"], ["Manchester United","PSG"], ["Norway","Monaco FC"], ["Inter Milan","Barcelona"], ["Brazil","Bayern München"], ["Manchester United","Real Madrid"], ["Norway","PSG"], ["BVB","Monaco FC"], ["Brazil","Barcelona"], ["Manchester United","Bayern München"], ["Norway","Real Madrid"], ["BVB","PSG"], ["Inter Milan","Monaco FC"], ["Manchester United","Barcelona"], ["Norway","Bayern München"], ["BVB","Real Madrid"], ["Inter Milan","PSG"], ["Brazil","Monaco FC"], ["Norway","Barcelona"], ["Inter Milan","Bayern München"], ["Brazil","Real Madrid"], ["Manchester United","PSG"], ["BVB","Monaco FC"], ["Brazil","Barcelona"], ["Manchester United","Bayern München"], ["Norway","Real Madrid"], ["BVB","PSG"], ["Inter Milan","Monaco FC"] ]; /* ========================================================= SAVE SCORE ========================================================= */ function save(id){ const home = document.getElementById("h"+id); const away = document.getElementById("a"+id); if(home.value==="" || away.value===""){ alert("Please enter both scores."); return; } if(Number(home.value)<0 || Number(away.value)<0){ alert("Score cannot be negative."); return; } const data = JSON.parse(localStorage.getItem("sslScores") || "{}"); data[id]={ home:Number(home.value), away:Number(away.value) }; localStorage.setItem( "sslScores", JSON.stringify(data) ); calculate(); const button = home.parentElement.querySelector(".save-btn"); button.classList.add("saved"); button.innerText="SAVED"; setTimeout(()=>{ button.classList.remove("saved"); button.innerText="SAVE"; },800); } /* ========================================================= CALCULATE ========================================================= */ function calculate(){ const scores = JSON.parse( localStorage.getItem("sslScores") || "{}" ); const stats={}; Object.keys(teams).forEach(name=>{ stats[name]={ name:name, player:teams[name].player, logo:teams[name].logo, played:0, wins:0, draws:0, losses:0, gf:0, ga:0, gd:0, points:0 }; }); let played=0; fixtureData.forEach((match,index)=>{ const id=index+1; const result=scores[id]; if(!result) return; played++; const home=stats[match[0]]; const away=stats[match[1]]; home.played++; away.played++; home.gf+=result.home; home.ga+=result.away; away.gf+=result.away; away.ga+=result.home; if(result.home>result.away){ home.wins++; away.losses++; home.points+=3; } else if(result.home<result.away){ away.wins++; home.losses++; away.points+=3; } else{ home.draws++; away.draws++; home.points++; away.points++; } }); Object.values(stats).forEach(team=>{ team.gd=team.gf-team.ga; }); const sorted = Object.values(stats).sort((a,b)=>{ if(b.points!==a.points) return b.points-a.points; if(b.gd!==a.gd) return b.gd-a.gd; return b.gf-a.gf; }); renderTable(sorted); renderCards(sorted); renderTop(sorted); renderStats(sorted); renderSemi(sorted); document.getElementById("played") .innerText=played; document.getElementById("remaining") .innerText=90-played; document.getElementById("leader") .innerText= played>0 ? sorted[0].name : "—"; } /* ========================================================= TABLE ========================================================= */ function renderTable(sorted){ const body = document.getElementById("tableBody"); body.innerHTML=""; sorted.forEach((team,index)=>{ body.innerHTML+=` <tr class="${index<4 ? "top-four":""}"> <td>${index+1}</td> <td> <div class="team-name"> <img src="${team.logo}"> <div> <strong>${team.name}</strong> <small>${team.player}</small> </div> </div> </td> <td>${team.played}</td> <td>${team.wins}</td> <td>${team.draws}</td> <td>${team.losses}</td> <td>${team.gf}</td> <td>${team.ga}</td> <td>${team.gd}</td> <td class="pts">${team.points}</td> </tr> `; }); } /* ========================================================= TEAM CARDS ========================================================= */ function renderCards(sorted){ const grid = document.getElementById("teamGrid"); grid.innerHTML=""; sorted.forEach(team=>{ grid.innerHTML+=` <div class="team-card"> <img src="${team.logo}"> <h3>${team.name}</h3> <p>${team.player}</p> <div class="card-stats"> <div> <b>${team.points}</b> <span>PTS</span> </div> <div> <b>${team.gf}</b> <span>GF</span> </div> <div> <b>${team.gd}</b> <span>GD</span> </div> </div> </div> `; }); } /* ========================================================= TOP TEAM ========================================================= */ function renderTop(sorted){ const top = [...sorted].sort( (a,b)=>b.gf-a.gf )[0]; if(!top) return; document.getElementById("topName") .innerText= top.gf>0 ? top.name : "No Results"; document.getElementById("topPlayer") .innerText= top.gf>0 ? `${top.player} • ${top.name}` : "Enter results below to update this section."; document.getElementById("topGoals") .innerText=top.gf; document.getElementById("topLogo") .src=top.logo; } /* ========================================================= STATISTICS ========================================================= */ function renderStats(sorted){ const mostGF = [...sorted].sort((a,b)=>b.gf-a.gf)[0]; const mostGA = [...sorted].sort((a,b)=>b.ga-a.ga)[0]; const lowestGA = [...sorted].sort((a,b)=>a.ga-b.ga)[0]; const bestGD = [...sorted].sort((a,b)=>b.gd-a.gd)[0]; document.getElementById("mostGF") .innerText=mostGF.gf>0 ? mostGF.name : "—"; document.getElementById("mostGFValue") .innerText=`${mostGF.gf} goals`; document.getElementById("mostGA") .innerText=mostGA.ga>0 ? mostGA.name : "—"; document.getElementById("mostGAValue") .innerText=`${mostGA.ga} goals`; document.getElementById("lowestGA") .innerText=lowestGA.name; document.getElementById("lowestGAValue") .innerText=`${lowestGA.ga} goals`; document.getElementById("bestGD") .innerText=bestGD.gd!==0 ? bestGD.name : "—"; document.getElementById("bestGDValue") .innerText=`${bestGD.gd} GD`; } /* ========================================================= SEMI FINALS ========================================================= */ function renderSemi(sorted){ if(sorted.length<4) return; const a=sorted[0]; const b=sorted[1]; const c=sorted[2]; const d=sorted[3]; document.getElementById("s1a") .innerText=a.name; document.getElementById("s1aLogo") .src=a.logo; document.getElementById("s1b") .innerText=d.name; document.getElementById("s1bLogo") .src=d.logo; document.getElementById("s2a") .innerText=b.name; document.getElementById("s2aLogo") .src=b.logo; document.getElementById("s2b") .innerText=c.name; document.getElementById("s2bLogo") .src=c.logo; } /* ========================================================= LOAD SAVED RESULTS ========================================================= */ function loadScores(){ const scores = JSON.parse( localStorage.getItem("sslScores") || "{}" ); Object.keys(scores).forEach(id=>{ const h = document.getElementById("h"+id); const a = document.getElementById("a"+id); if(h && a){ h.value=scores[id].home; a.value=scores[id].away; } }); } /* ========================================================= START ========================================================= */ loadScores(); calculate(); </script> </body> </html>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sunday Super League | Season 2</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   SUNDAY SUPER LEAGUE
+   PREMIUM CSS
+========================================================= */
+
+:root{
+    --bg:#05080a;
+    --bg2:#091114;
+    --panel:rgba(17,25,29,.78);
+    --panel2:rgba(25,34,39,.72);
+    --green:#00ff88;
+    --green2:#00c96b;
+    --gold:#ffd166;
+    --white:#ffffff;
+    --muted:#8d9ba3;
+    --danger:#ff5577;
+    --blue:#247cff;
+    --border:rgba(255,255,255,.09);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,rgba(0,255,136,.08),transparent 28%),
+        radial-gradient(circle at 80% 20%,rgba(36,124,255,.08),transparent 25%),
+        linear-gradient(135deg,#030506,#091114 50%,#020405);
+    color:var(--white);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(115deg,
+        transparent 0%,
+        rgba(0,255,136,.035) 45%,
+        transparent 50%);
+    animation:bgMove 10s linear infinite;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1px);
+    background-size:70px 70px;
+    opacity:.15;
+    animation:stars 20s linear infinite;
+    z-index:-1;
+}
+
+@keyframes bgMove{
+    0%{transform:translateX(-50%);}
+    100%{transform:translateX(50%);}
+}
+
+@keyframes stars{
+    from{transform:translateY(0);}
+    to{transform:translateY(-70px);}
+}
+
+/* =========================
+   STADIUM LIGHTS
+========================= */
+
+.stadium-lights{
+    position:fixed;
+    top:-100px;
+    left:0;
+    width:100%;
+    height:350px;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.light{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:conic-gradient(
+        from 180deg,
+        transparent,
+        rgba(0,255,136,.08),
+        transparent 35%
+    );
+    filter:blur(15px);
+    transform-origin:top center;
+    animation:lightMove 6s ease-in-out infinite alternate;
+}
+
+.light:nth-child(1){
+    left:-100px;
+}
+
+.light:nth-child(2){
+    right:-100px;
+    animation-delay:2s;
+}
+
+@keyframes lightMove{
+    from{
+        transform:rotate(-18deg);
+        opacity:.4;
+    }
+    to{
+        transform:rotate(18deg);
+        opacity:1;
+    }
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(20px);
+    background:rgba(4,8,10,.78);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    max-width:1400px;
+    margin:auto;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    letter-spacing:-.5px;
+}
+
+.brand-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--green),#00a95c);
+    color:#00150c;
+    box-shadow:0 0 25px rgba(0,255,136,.3);
+    font-size:22px;
+}
+
+.brand small{
+    display:block;
+    color:var(--green);
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    color:#aeb9be;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    padding:9px 12px;
+    border-radius:9px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+    background:rgba(0,255,136,.08);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    max-width:1400px;
+    margin:auto;
+    min-height:480px;
+    padding:90px 25px 70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-flex;
+    padding:8px 15px;
+    border:1px solid rgba(0,255,136,.25);
+    border-radius:50px;
+    color:var(--green);
+    background:rgba(0,255,136,.05);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:20px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        box-shadow:0 0 30px rgba(0,255,136,.15);
+    }
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,88px);
+    line-height:.95;
+    font-weight:900;
+    letter-spacing:-5px;
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #9fffc9,
+        #fff
+    );
+    background-size:200%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:titleShine 5s linear infinite;
+}
+
+@keyframes titleShine{
+    to{background-position:200%;}
+}
+
+.hero h1 span{
+    display:block;
+    color:var(--green);
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:22px;
+    font-size:14px;
+}
+
+.hero-ball{
+    position:absolute;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.05);
+    right:7%;
+    top:100px;
+    opacity:.4;
+    animation:ballSpin 15s linear infinite;
+}
+
+.hero-ball::before{
+    content:"⚽";
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    font-size:100px;
+    filter:drop-shadow(0 0 30px rgba(0,255,136,.2));
+}
+
+@keyframes ballSpin{
+    to{transform:rotate(360deg);}
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:min(1400px,calc(100% - 40px));
+    margin:auto;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:55px;
+}
+
+.stat-card{
+    position:relative;
+    overflow:hidden;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:24px;
+    backdrop-filter:blur(20px);
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(0,255,136,.3);
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+.stat-card::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-40px;
+    bottom:-40px;
+    background:var(--green);
+    filter:blur(70px);
+    opacity:.1;
+}
+
+.stat-title{
+    color:var(--muted);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.stat-value{
+    font-size:34px;
+    font-weight:900;
+    margin-top:10px;
+}
+
+.stat-sub{
+    color:var(--green);
+    font-size:11px;
+    margin-top:4px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin:80px 0;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:22px;
+}
+
+.section-heading h2{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================
+   TOP TEAM
+========================= */
+
+.top-team{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    overflow:hidden;
+    border-radius:25px;
+    border:1px solid var(--border);
+    background:
+        linear-gradient(
+            110deg,
+            rgba(0,255,136,.12),
+            rgba(10,15,18,.95)
+        );
+    min-height:330px;
+}
+
+.top-team-info{
+    padding:45px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.top-label{
+    color:var(--green);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.top-team h2{
+    font-size:48px;
+    margin:10px 0;
+}
+
+.top-team p{
+    color:var(--muted);
+}
+
+.top-team-visual{
+    display:grid;
+    place-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.top-team-visual::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:var(--green);
+    filter:blur(100px);
+    opacity:.15;
+}
+
+.top-team-visual img{
+    width:190px;
+    height:190px;
+    object-fit:contain;
+    position:relative;
+    filter:drop-shadow(0 0 30px rgba(255,255,255,.2));
+    animation:logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+    50%{
+        transform:translateY(-12px) scale(1.04);
+    }
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--panel);
+    backdrop-filter:blur(15px);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:800px;
+}
+
+th{
+    color:#77858c;
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-align:left;
+    padding:17px;
+    border-bottom:1px solid var(--border);
+}
+
+td{
+    padding:14px 17px;
+    border-bottom:1px solid rgba(255,255,255,.045);
+    font-size:12px;
+    font-weight:600;
+}
+
+tbody tr{
+    transition:.25s;
+}
+
+tbody tr:hover{
+    background:rgba(0,255,136,.04);
+}
+
+.qualify{
+    border-left:3px solid var(--green);
+    background:rgba(0,255,136,.025);
+}
+
+.team-cell{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.team-cell img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+}
+
+.points{
+    font-size:15px;
+    color:var(--green);
+    font-weight:900;
+}
+
+/* =========================
+   TEAM GRID
+========================= */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+}
+
+.team-card{
+    padding:22px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--panel);
+    text-align:center;
+    transition:.3s;
+}
+
+.team-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(0,255,136,.25);
+    box-shadow:0 15px 45px rgba(0,0,0,.3);
+}
+
+.team-card img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:14px;
+    transition:.3s;
+}
+
+.team-card:hover img{
+    transform:scale(1.12);
+}
+
+.team-card h3{
+    font-size:15px;
+}
+
+.team-card p{
+    color:var(--green);
+    font-size:10px;
+    margin-top:5px;
+}
+
+.team-mini-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:5px;
+    margin-top:18px;
+}
+
+.team-mini-stats div{
+    background:rgba(255,255,255,.035);
+    border-radius:8px;
+    padding:8px 2px;
+}
+
+.team-mini-stats b{
+    display:block;
+    font-size:13px;
+}
+
+.team-mini-stats span{
+    color:#68757b;
+    font-size:8px;
+}
+
+/* =========================
+   FIXTURES
+========================= */
+
+.matchday{
+    margin-bottom:28px;
+}
+
+.matchday-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.matchday-title span{
+    padding:6px 10px;
+    border-radius:7px;
+    background:rgba(0,255,136,.08);
+    color:var(--green);
+    font-size:9px;
+    font-weight:900;
+}
+
+.matchday-title h3{
+    font-size:14px;
+}
+
+.fixtures{
+    display:grid;
+    gap:8px;
+}
+
+.fixture{
+    display:grid;
+    grid-template-columns:1fr 100px 1fr;
+    align-items:center;
+    gap:15px;
+    padding:14px 18px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    transition:.25s;
+}
+
+.fixture:hover{
+    border-color:rgba(0,255,136,.2);
+    background:rgba(20,30,34,.9);
+}
+
+.fixture-team{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.fixture-team.away{
+    justify-content:flex-end;
+}
+
+.fixture-team img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+}
+
+.score-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+}
+
+.score-box input{
+    width:35px;
+    height:34px;
+    background:#070b0d;
+    color:#fff;
+    border:1px solid #263239;
+    border-radius:8px;
+    text-align:center;
+    font-weight:900;
+    outline:none;
+}
+
+.score-box input:focus{
+    border-color:var(--green);
+    box-shadow:0 0 15px rgba(0,255,136,.15);
+}
+
+.score-box button{
+    height:34px;
+    padding:0 10px;
+    border:none;
+    border-radius:8px;
+    background:var(--green);
+    color:#00150c;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.score-box button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(0,255,136,.25);
+}
+
+/* =========================
+   INTER SECTION
+========================= */
+
+.inter-section{
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(36,124,255,.25);
+    border-radius:25px;
+    padding:30px;
+    background:
+        radial-gradient(circle at 90% 20%,rgba(36,124,255,.14),transparent 30%),
+        rgba(8,14,20,.8);
+}
+
+.inter-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(36,124,255,.04),
+        transparent
+    );
+    animation:interLight 4s linear infinite;
+}
+
+@keyframes interLight{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(100%);}
+}
+
+.inter-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.inter-header img{
+    width:65px;
+    height:65px;
+    object-fit:contain;
+}
+
+.inter-header h2{
+    font-size:26px;
+}
+
+.inter-header span{
+    color:#599aff;
+    font-size:11px;
+}
+
+/* =========================
+   SEMI FINALS
+========================= */
+
+.semi-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.semi-card{
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,209,102,.06),
+            rgba(10,15,18,.9)
+        );
+    position:relative;
+    overflow:hidden;
+}
+
+.semi-card::after{
+    content:"VS";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:11px;
+    font-weight:900;
+    color:#69767c;
+}
+
+.semi-title{
+    color:var(--gold);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.semi-team{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px;
+    background:rgba(255,255,255,.03);
+    border-radius:12px;
+    margin:6px 0;
+}
+
+.semi-team div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.semi-team img{
+    width:35px;
+    height:35px;
+    object-fit:contain;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:35px 20px;
+    margin-top:100px;
+    text-align:center;
+    color:#647279;
+    font-size:11px;
+}
+
+footer strong{
+    color:var(--green);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .dashboard{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .team-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .top-team{
+        grid-template-columns:1fr;
+    }
+
+    .top-team-visual{
+        min-height:250px;
+    }
+
+    .semi-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    .nav-inner{
+        flex-direction:column;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .hero{
+        min-height:420px;
+        padding-top:60px;
+    }
+
+    .hero h1{
+        font-size:45px;
+        letter-spacing:-3px;
+    }
+
+    .hero-ball{
+        opacity:.15;
+        right:50%;
+        transform:translateX(50%);
+    }
+
+    .dashboard{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat-card{
+        padding:17px;
+    }
+
+    .stat-value{
+        font-size:25px;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .top-team-info{
+        padding:30px;
+    }
+
+    .top-team h2{
+        font-size:35px;
+    }
+
+    .fixture{
+        grid-template-columns:1fr;
+        gap:10px;
+        text-align:center;
+    }
+
+    .fixture-team,
+    .fixture-team.away{
+        justify-content:center;
+    }
+
+    .score-box{
+        order:3;
+    }
+}
+
+@media(max-width:420px){
+
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .team-card{
+        padding:15px 8px;
+    }
+
+    .team-card img{
+        width:55px;
+        height:55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ANIMATED STADIUM LIGHTS -->
+<div class="stadium-lights">
+    <div class="light"></div>
+    <div class="light"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-inner">
+
+        <div class="brand">
+            <div class="brand-icon">⚽</div>
+
+            <div>
+                SUNDAY SUPER LEAGUE
+                <small>SEASON 2</small>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#standings">Standings</a>
+            <a href="#teams">Teams</a>
+            <a href="#fixtures">Fixtures</a>
+            <a href="#inter">Inter</a>
+            <a href="#semifinals">Semi-Finals</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🏆 10 TEAMS • 90 MATCHES • TOP 4 QUALIFY
+        </div>
+
+        <h1>
+            SUNDAY
+            <span>SUPER LEAGUE</span>
+        </h1>
+
+        <p>
+            Season 2 • Double Round Robin • The Road to the Semi-Finals
+        </p>
+
+    </div>
+
+    <div class="hero-ball"></div>
+
+</header>
+
+
+<main class="container">
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="dashboard">
+
+    <div class="stat-card">
+        <div class="stat-title">TOTAL MATCHES</div>
+        <div class="stat-value">90</div>
+        <div class="stat-sub">18 Matchdays</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">MATCHES PLAYED</div>
+        <div class="stat-value" id="playedCount">0</div>
+        <div class="stat-sub">Live calculation</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">REMAINING</div>
+        <div class="stat-value" id="remainingCount">90</div>
+        <div class="stat-sub">Fixtures remaining</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">LEAGUE LEADER</div>
+        <div class="stat-value" id="leaderName">—</div>
+        <div class="stat-sub">Current 1st place</div>
+    </div>
+
+</section>
+
+
+<!-- TOP SCORING TEAM -->
+<section class="section">
+
+    <div class="section-heading">
+        <div>
+            <h2>🔥 Top Scoring Team</h2>
+            <p>Automatically calculated from match results</p>
+        </div>
+    </div>
+
+    <div class="top-team">
+
+        <div class="top-team-info">
+
+            <div class="top-label">MOST GOALS SCORED</div>
+
+            <h2 id="topTeamName">No Results</h2>
+
+            <p id="topTeamPlayer">
+                Enter match results to update statistics.
+            </p>
+
+            <div style="margin-top:20px;">
+                <strong id="topGoals" style="font-size:40px;">0</strong>
+                <span style="color:#8d9ba3;font-size:12px;"> GOALS</span>
+            </div>
+
+        </div>
+
+        <div class="top-team-visual">
+            <img id="topTeamLogo"
+                 src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"
+                 alt="Top team logo">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STANDINGS -->
+<section id="standings" class="section">
+
+    <div class="section-heading">
+        <div>
+            <h2>📊 League Table</h2>
+            <p>Top 4 qualify for the semi-finals</p>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>GD</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+
+            <tbody id="standingsBody"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- TEAMS -->
+<section id="teams" class="section">
+
+    <div class="section-heading">
+        <div>
+            <h2>⚽ Teams</h2>
+            <p>10 players • 10 teams</p>
+        </div>
+    </div>
+
+    <div class="team-grid" id="teamGrid"></div>
+
+</section>
+
+
+<!-- FIXTURES -->
+<section id="fixtures" class="section">
+
+    <div class="section-heading">
+        <div>
+            <h2>📅 All Fixtures</h2>
+            <p>Enter the scores directly below</p>
+        </div>
+    </div>
+
+    <div id="fixturesContainer"></div>
+
+</section>
+
+
+<!-- INTER -->
+<section id="inter" class="section">
+
+    <div class="inter-section">
+
+        <div class="inter-header">
+
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"
+                alt="Inter Milan">
+
+            <div>
+                <h2>Inter Milan</h2>
+                <span>THALA • 18 League Fixtures</span>
+            </div>
+
+        </div>
+
+        <div id="interFixtures"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SEMI FINALS -->
+<section id="semifinals" class="section">
+
+    <div class="section-heading">
+        <div>
+            <h2>🏆 Semi-Finals</h2>
+            <p>Top 4 after the league stage</p>
+        </div>
+    </div>
+
+    <div class="semi-grid">
+
+        <div class="semi-card">
+
+            <div class="semi-title">
+                SEMI-FINAL 1
+            </div>
+
+            <div class="semi-team">
+                <div>
+                    <img id="semi1logo1" src="" alt="">
+                    <span id="semi1team1">1st Place</span>
+                </div>
+                <strong>1</strong>
+            </div>
+
+            <div class="semi-team">
+                <div>
+                    <img id="semi1logo2" src="" alt="">
+                    <span id="semi1team2">4th Place</span>
+                </div>
+                <strong>4</strong>
+            </div>
+
+        </div>
+
+
+        <div class="semi-card">
+
+            <div class="semi-title">
+                SEMI-FINAL 2
+            </div>
+
+            <div class="semi-team">
+                <div>
+                    <img id="semi2logo1" src="" alt="">
+                    <span id="semi2team1">2nd Place</span>
+                </div>
+                <strong>2</strong>
+            </div>
+
+            <div class="semi-team">
+                <div>
+                    <img id="semi2logo2" src="" alt="">
+                    <span id="semi2team2">3rd Place</span>
+                </div>
+                <strong>3</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    <strong>SUNDAY SUPER LEAGUE</strong><br><br>
+    Season 2 • 10 Players • 10 Teams • 90 Matches
+</footer>
+
+
+<script>
+
+/* =========================================================
+   TEAM DATA
+========================================================= */
+
+const teams = [
+
+    {
+        player:"Nirmal",
+        name:"Barcelona",
+        logo:"https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"
+    },
+
+    {
+        player:"Edwin",
+        name:"Bayern München",
+        logo:"https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg"
+    },
+
+    {
+        player:"Dino",
+        name:"Real Madrid",
+        logo:"https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"
+    },
+
+    {
+        player:"Amal",
+        name:"PSG",
+        logo:"https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg"
+    },
+
+    {
+        player:"Aman",
+        name:"Monaco FC",
+        logo:"https://upload.wikimedia.org/wikipedia/en/b/ba/AS_Monaco_FC.svg"
+    },
+
+    {
+        player:"Prince",
+        name:"BVB",
+        logo:"https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"
+    },
+
+    {
+        player:"THALA",
+        name:"Inter Milan",
+        logo:"https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"
+    },
+
+    {
+        player:"Jinish",
+        name:"Manchester United",
+        logo:"https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"
+    },
+
+    {
+        player:"Alen T",
+        name:"Brazil",
+        logo:"https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"
+    },
+
+    {
+        player:"Anil",
+        name:"Norway",
+        logo:"https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"
+    }
+
+];
+
+
+/* =========================================================
+   GENERATE DOUBLE ROUND ROBIN
+========================================================= */
+
+let fixtures = [];
+let fixtureId = 1;
+
+for(let round=0; round<9; round++){
+
+    let rotated = teams.slice(1);
+
+    for(let i=0;i<round;i++){
+
+        rotated.push(rotated.shift());
+
+    }
+
+    const roundTeams = [teams[0],...rotated];
+
+    for(let i=0;i<5;i++){
+
+        fixtures.push({
+            id:fixtureId++,
+            matchday:round+1,
+            home:roundTeams[i],
+            away:roundTeams[9-i],
+            homeScore:null,
+            awayScore:null
+        });
+
+    }
+}
+
+
+/* SECOND HALF */
+
+for(let round=0; round<9; round++){
+
+    let firstHalf = fixtures
+        .filter(f=>f.matchday===round+1);
+
+    firstHalf.forEach(match=>{
+
+        fixtures.push({
+
+            id:fixtureId++,
+
+            matchday:round+10,
+
+            home:match.away,
+
+            away:match.home,
+
+            homeScore:null,
+
+            awayScore:null
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   LOCAL STORAGE
+========================================================= */
+
+const saved = localStorage.getItem("sslSeason2");
+
+if(saved){
+
+    const savedData = JSON.parse(saved);
+
+    fixtures.forEach(f=>{
+
+        const old = savedData.find(x=>x.id===f.id);
+
+        if(old){
+
+            f.homeScore=old.homeScore;
+            f.awayScore=old.awayScore;
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   RENDER FIXTURES
+========================================================= */
+
+function renderFixtures(){
+
+    const container =
+        document.getElementById("fixturesContainer");
+
+    container.innerHTML="";
+
+    for(let day=1;day<=18;day++){
+
+        const matches =
+            fixtures.filter(f=>f.matchday===day);
+
+        const section =
+            document.createElement("div");
+
+        section.className="matchday";
+
+        section.innerHTML=`
+
+            <div class="matchday-title">
+
+                <span>MATCHDAY ${day}</span>
+
+                <h3>League Fixtures</h3>
+
+            </div>
+
+            <div class="fixtures">
+
+                ${matches.map(match=>`
+
+                    <div class="fixture">
+
+                        <div class="fixture-team">
+
+                            <img src="${match.home.logo}">
+
+                            ${match.home.name}
+
+                        </div>
+
+                        <div class="score-box">
+
+                            <input
+                                type="number"
+                                min="0"
+                                id="home-${match.id}"
+                                value="${match.homeScore ?? ''}"
+                            >
+
+                            <span>:</span>
+
+                            <input
+                                type="number"
+                                min="0"
+                                id="away-${match.id}"
+                                value="${match.awayScore ?? ''}"
+                            >
+
+                            <button onclick="saveScore(${match.id})">
+                                SAVE
+                            </button>
+
+                        </div>
+
+                        <div class="fixture-team away">
+
+                            ${match.away.name}
+
+                            <img src="${match.away.logo}">
+
+                        </div>
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+        `;
+
+        container.appendChild(section);
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE SCORE
+========================================================= */
+
+function saveScore(id){
+
+    const match =
+        fixtures.find(f=>f.id===id);
+
+    const homeInput =
+        document.getElementById(`home-${id}`);
+
+    const awayInput =
+        document.getElementById(`away-${id}`);
+
+    if(
+        homeInput.value==="" ||
+        awayInput.value===""
+    ){
+
+        alert("Please enter both scores.");
+
+        return;
+
+    }
+
+    match.homeScore =
+        Number(homeInput.value);
+
+    match.awayScore =
+        Number(awayInput.value);
+
+    localStorage.setItem(
+        "sslSeason2",
+        JSON.stringify(fixtures)
+    );
+
+    calculate();
+
+}
+
+
+/* =========================================================
+   CALCULATE TABLE
+========================================================= */
+
+function calculate(){
+
+    const stats={};
+
+    teams.forEach(team=>{
+
+        stats[team.name]={
+
+            ...team,
+
+            played:0,
+            wins:0,
+            draws:0,
+            losses:0,
+            gf:0,
+            ga:0,
+            gd:0,
+            points:0
+
+        };
+
+    });
+
+
+    let played=0;
+
+
+    fixtures.forEach(match=>{
+
+        if(
+            match.homeScore===null ||
+            match.awayScore===null
+        ) return;
+
+
+        played++;
+
+        const home =
+            stats[match.home.name];
+
+        const away =
+            stats[match.away.name];
+
+
+        home.played++;
+        away.played++;
+
+
+        home.gf += match.homeScore;
+        home.ga += match.awayScore;
+
+        away.gf += match.awayScore;
+        away.ga += match.homeScore;
+
+
+        if(match.homeScore > match.awayScore){
+
+            home.wins++;
+            away.losses++;
+
+            home.points+=3;
+
+        }
+
+        else if(match.homeScore < match.awayScore){
+
+            away.wins++;
+            home.losses++;
+
+            away.points+=3;
+
+        }
+
+        else{
+
+            home.draws++;
+            away.draws++;
+
+            home.points++;
+            away.points++;
+
+        }
+
+    });
+
+
+    Object.values(stats).forEach(team=>{
+
+        team.gd =
+            team.gf-team.ga;
+
+    });
+
+
+    const sorted =
+        Object.values(stats).sort((a,b)=>{
+
+            if(b.points!==a.points)
+                return b.points-a.points;
+
+            if(b.gd!==a.gd)
+                return b.gd-a.gd;
+
+            return b.gf-a.gf;
+
+        });
+
+
+    renderStandings(sorted);
+
+    renderTeamCards(sorted);
+
+    renderTopTeam(sorted);
+
+    renderSemiFinals(sorted);
+
+
+    document.getElementById("playedCount")
+        .textContent=played;
+
+    document.getElementById("remainingCount")
+        .textContent=90-played;
+
+    document.getElementById("leaderName")
+        .textContent=sorted[0].points>0
+        ? sorted[0].name
+        : "—";
+
+}
+
+
+/* =========================================================
+   STANDINGS
+========================================================= */
+
+function renderStandings(sorted){
+
+    const body =
+        document.getElementById("standingsBody");
+
+    body.innerHTML="";
+
+    sorted.forEach((team,index)=>{
+
+        body.innerHTML += `
+
+            <tr class="${index<4 ? "qualify":""}">
+
+                <td>${index+1}</td>
+
+                <td>
+
+                    <div class="team-cell">
+
+                        <img src="${team.logo}">
+
+                        <div>
+                            <strong>${team.name}</strong>
+                            <br>
+                            <small style="color:#68757b">
+                                ${team.player}
+                            </small>
+                        </div>
+
+                    </div>
+
+                </td>
+
+                <td>${team.played}</td>
+                <td>${team.wins}</td>
+                <td>${team.draws}</td>
+                <td>${team.losses}</td>
+                <td>${team.gf}</td>
+                <td>${team.ga}</td>
+                <td>${team.gd}</td>
+                <td class="points">${team.points}</td>
+
+            </tr>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   TEAM CARDS
+========================================================= */
+
+function renderTeamCards(sorted){
+
+    const grid =
+        document.getElementById("teamGrid");
+
+    grid.innerHTML="";
+
+    sorted.forEach(team=>{
+
+        grid.innerHTML += `
+
+            <div class="team-card">
+
+                <img src="${team.logo}">
+
+                <h3>${team.name}</h3>
+
+                <p>${team.player}</p>
+
+                <div class="team-mini-stats">
+
+                    <div>
+                        <b>${team.points}</b>
+                        <span>PTS</span>
+                    </div>
+
+                    <div>
+                        <b>${team.gf}</b>
+                        <span>GF</span>
+                    </div>
+
+                    <div>
+                        <b>${team.gd}</b>
+                        <span>GD</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   TOP SCORING TEAM
+========================================================= */
+
+function renderTopTeam(sorted){
+
+    const top =
+        [...sorted].sort((a,b)=>b.gf-a.gf)[0];
+
+    if(!top) return;
+
+    document.getElementById("topTeamName")
+        .textContent =
+        top.gf>0 ? top.name : "No Results";
+
+    document.getElementById("topTeamPlayer")
+        .textContent =
+        top.gf>0
+        ? `${top.player} • ${top.name}`
+        : "Enter match results to update statistics.";
+
+    document.getElementById("topGoals")
+        .textContent=top.gf;
+
+    document.getElementById("topTeamLogo")
+        .src=top.logo;
+
+}
+
+
+/* =========================================================
+   INTER FIXTURES
+========================================================= */
+
+function renderInter(){
+
+    const container =
+        document.getElementById("interFixtures");
+
+    const inter =
+        teams.find(t=>t.name==="Inter Milan");
+
+    const matches =
+        fixtures.filter(
+            f=>
+                f.home.name==="Inter Milan" ||
+                f.away.name==="Inter Milan"
+        );
+
+    container.innerHTML = matches.map(match=>{
+
+        const isHome =
+            match.home.name==="Inter Milan";
+
+        const opponent =
+            isHome ? match.away : match.home;
+
+        const score =
+            match.homeScore!==null
+            ? `${match.homeScore} - ${match.awayScore}`
+            : "vs";
+
+        return `
+
+            <div class="fixture">
+
+                <div class="fixture-team">
+
+                    <img src="${isHome ? inter.logo : opponent.logo}">
+
+                    ${isHome ? "Inter Milan" : opponent.name}
+
+                </div>
+
+                <div style="
+                    text-align:center;
+                    font-size:12px;
+                    font-weight:900;
+                    color:#599aff;
+                ">
+                    ${score}
+                </div>
+
+                <div class="fixture-team away">
+
+                    ${isHome ? opponent.name : "Inter Milan"}
+
+                    <img src="${isHome ? opponent.logo : inter.logo}">
+
+                </div>
+
+            </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   SEMI FINALS
+========================================================= */
+
+function renderSemiFinals(sorted){
+
+    if(sorted.length<4) return;
+
+    const positions=[
+        ["semi1team1","semi1logo1",sorted[0]],
+        ["semi1team2","semi1logo2",sorted[3]],
+        ["semi2team1","semi2logo1",sorted[1]],
+        ["semi2team2","semi2logo2",sorted[2]]
+    ];
+
+    positions.forEach(([nameId,logoId,team])=>{
+
+        document.getElementById(nameId)
+            .textContent=team.name;
+
+        document.getElementById(logoId)
+            .src=team.logo;
+
+    });
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderFixtures();
+
+renderInter();
+
+calculate();
+
+</script>
+
+</body>
+</html>
+```
