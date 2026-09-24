@@ -3418,7 +3418,7 @@ function renderTopTeam(sorted){
             top.player === "Nirmal" && Number(displayedGoals) >= 100;
 
         card.classList.toggle("goal-century", isNirmalCentury);
-        label.textContent = isNirmalCentury ? "HUNDER HUNDER" : "";
+        label.textContent = isNirmalCentury ? "HUNDER HUNDRED" : "";
 
         if(isNirmalCentury && !card.dataset.celebrating){
             card.dataset.celebrating = "1";
