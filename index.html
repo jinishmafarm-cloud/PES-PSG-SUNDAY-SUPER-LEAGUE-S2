@@ -566,24 +566,111 @@ tr.qualify{
 }
 
 
+
 /* =========================================================
-   INTER MILAN
+   PENDING MATCHES
 ========================================================= */
 
-.inter-section{
-    background:
-        linear-gradient(
-            180deg,
-            rgba(25,95,255,.03),
-            transparent
-        );
+.pending-section{
+    background:linear-gradient(180deg,rgba(0,170,255,.035),transparent);
 }
 
-.inter-box{
-    border:1px solid rgba(70,130,255,.15);
+.pending-card-button{
+    width:100%;
+    margin-top:15px;
+    padding:10px 12px;
+    border:1px solid rgba(0,255,136,.18);
+    border-radius:10px;
+    background:rgba(0,255,136,.06);
+    color:#00ff88;
+    font-size:11px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.pending-card-button:hover{
+    background:rgba(0,255,136,.14);
+    border-color:rgba(0,255,136,.4);
+    transform:translateY(-2px);
+}
+
+.pending-card-button.active{
+    background:#00ff88;
+    color:#06100d;
+}
+
+.pending-panel{
+    margin-top:25px;
+    display:none;
+    border:1px solid rgba(0,255,136,.16);
     border-radius:20px;
     overflow:hidden;
-    background:rgba(9,15,18,.8);
+    background:rgba(9,15,18,.88);
+}
+
+.pending-panel.show{
+    display:block;
+    animation:pendingPanelIn .25s ease-out;
+}
+
+@keyframes pendingPanelIn{
+    from{opacity:0;transform:translateY(8px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.pending-panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:20px 22px;
+    background:linear-gradient(90deg,rgba(0,255,136,.09),rgba(255,255,255,.025));
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.pending-panel-head h3{
+    font-size:18px;
+}
+
+.pending-panel-head p{
+    margin-top:5px;
+    color:#748187;
+    font-size:11px;
+}
+
+.pending-close{
+    border:0;
+    border-radius:9px;
+    padding:8px 12px;
+    background:rgba(255,255,255,.06);
+    color:#aeb9bd;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.pending-close:hover{
+    background:rgba(255,255,255,.1);
+    color:#fff;
+}
+
+.pending-list .fixture{
+    border-bottom:1px solid rgba(255,255,255,.045);
+}
+
+.pending-empty{
+    padding:35px 20px;
+    text-align:center;
+    color:#77848a;
+}
+
+@media(max-width:600px){
+    .pending-panel-head{
+        align-items:flex-start;
+    }
+    .pending-panel-head h3{
+        font-size:15px;
+    }
 }
 
 
@@ -649,6 +736,52 @@ footer{
     font-size:11px;
 }
 
+
+/* =========================================================
+   PENDING MATCH PAGE
+========================================================= */
+.pending-page{
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    display:none;
+    overflow-y:auto;
+    background:
+        radial-gradient(circle at 50% 0%,#12352d 0%,#091114 42%,#050708 100%);
+    padding:80px 0 50px;
+}
+.pending-page.show{display:block;animation:pendingPageIn .22s ease-out;}
+@keyframes pendingPageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.pending-page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:25px;
+}
+.pending-page-header h1{font-size:clamp(28px,5vw,48px);}
+.pending-page-header p{color:#89969b;margin-top:7px;}
+.pending-back{
+    border:1px solid rgba(0,255,136,.3);
+    background:rgba(0,255,136,.08);
+    color:#00ff88;
+    padding:11px 18px;
+    border-radius:10px;
+    font-weight:900;
+    cursor:pointer;
+}
+.pending-back:hover{background:rgba(0,255,136,.16);}
+.pending-page-list{display:grid;gap:12px;}
+.pending-page-list .fixture{
+    background:rgba(10,16,18,.82);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    margin-bottom:0;
+}
+.pending-page-empty{
+    padding:35px;text-align:center;border-radius:18px;
+    background:rgba(10,16,18,.82);color:#89969b;
+}
 
 /* =========================================================
    MOBILE
@@ -1020,6 +1153,7 @@ footer{
         <a href="#dashboard">Dashboard</a>
         <a href="#standings">Standings</a>
         <a href="#fixtures">Fixtures</a>
+        <a href="#pendingMatches">Pending</a>
         <a href="#semifinals">Semi Finals</a>
 
     </div>
@@ -2160,33 +2294,59 @@ data-away="2">
 
 
 <!-- =====================================================
-     INTER MILAN
+     PENDING MATCH PAGE
+====================================================== -->
+<div id="pendingMatchPage" class="pending-page" aria-hidden="true">
+  <div class="container">
+    <div class="pending-page-header">
+      <div>
+        <div class="top-team-label">SUNDAY SUPER LEAGUE • SEASON 2</div>
+        <h1 id="pendingPageTitle">Pending Matches</h1>
+        <p id="pendingPageInfo">Select a team to view pending matches.</p>
+      </div>
+      <button class="pending-back" type="button" onclick="closePendingMatchPage()">← BACK</button>
+    </div>
+    <div id="pendingPageList" class="pending-page-list"></div>
+  </div>
+</div>
+
+<!-- =====================================================
+     PENDING MATCHES
 ====================================================== -->
 
-<section class="inter-section">
+<section id="pendingMatches" class="pending-section">
 
 <div class="container">
 
 <div class="section-heading">
 
 <div>
-
-<h2>
-    THALA • Inter Milan
-</h2>
-
-<p>
-    Complete Inter Milan fixture list
-</p>
-
+<h2>Pending Matches</h2>
+<p>Click a team above to view only that team's unplayed matches</p>
 </div>
 
 </div>
 
+<div id="pendingPanel" class="pending-panel">
 
-<div
-    id="interFixtures"
-    class="inter-box">
+    <div class="pending-panel-head">
+
+        <div>
+            <h3 id="pendingTeamName">Pending Matches</h3>
+            <p id="pendingTeamInfo">Select a team to view its remaining fixtures.</p>
+        </div>
+
+        <button
+            class="pending-close"
+            onclick="closePendingMatches()"
+        >
+            CLOSE
+        </button>
+
+    </div>
+
+    <div id="pendingList" class="pending-list"></div>
+
 </div>
 
 </div>
@@ -2388,11 +2548,13 @@ const teams = [
     logo:"https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg"
 },
 
+
 {
     player:"THALA",
     name:"Inter Milan",
     logo:"https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg"
 },
+
 
 {
     player:"Jinish",
@@ -2486,6 +2648,95 @@ document
     });
 
 });
+
+
+/* =========================================================
+   PENDING MATCHES BY TEAM
+========================================================= */
+
+function showPendingMatches(teamName){
+
+    const page = document.getElementById("pendingMatchPage");
+    const list = document.getElementById("pendingPageList");
+    const title = document.getElementById("pendingPageTitle");
+    const info = document.getElementById("pendingPageInfo");
+
+    const matches = fixtures.filter(match =>
+        (match.home.name === teamName || match.away.name === teamName) &&
+        (match.homeScore === null || match.awayScore === null)
+    );
+
+    const team = teamMap[teamName];
+
+    document.querySelectorAll(".pending-card-button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    const activeButton = Array.from(document.querySelectorAll(".pending-card-button"))
+        .find(button => button.dataset.team === teamName);
+
+    if(activeButton){
+        activeButton.classList.add("active");
+    }
+
+    title.textContent = `${teamName} • Pending Matches`;
+    info.textContent = `${team ? team.player : ""} • ${matches.length} match${matches.length === 1 ? "" : "es"} remaining`;
+
+    if(!matches.length){
+        list.innerHTML = `
+            <div class="pending-page-empty">
+                <strong>No pending matches</strong><br>
+                All scheduled matches for ${teamName} have results.
+            </div>`;
+    } else {
+        list.innerHTML = matches.map(match => {
+            const isHome = match.home.name === teamName;
+            const opponent = isHome ? match.away : match.home;
+
+            return `
+                <div class="fixture pending-fixture">
+                    <div class="fixture-team">
+                        <span class="fixture-number">#${match.id}</span>
+                        <img src="${team.logo}" alt="${teamName}">
+                        ${teamName}
+                    </div>
+
+                    <div class="score-box">
+                        <strong class="match-score">VS</strong>
+                    </div>
+
+                    <div class="fixture-team away">
+                        ${opponent.name}
+                        <img src="${opponent.logo}" alt="${opponent.name}">
+                    </div>
+                </div>`;
+        }).join("");
+    }
+
+    page.classList.add("show");
+    page.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+    window.location.hash = "pending-" + encodeURIComponent(teamName);
+    page.scrollTop = 0;
+}
+
+function closePendingMatchPage(){
+    const page = document.getElementById("pendingMatchPage");
+    page.classList.remove("show");
+    page.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+    document.querySelectorAll(".pending-card-button").forEach(button => {
+        button.classList.remove("active");
+    });
+    if(window.location.hash.indexOf("pending-") === 0){
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+}
+
+function closePendingMatches(){
+    closePendingMatchPage();
+    document.getElementById("pendingPanel").classList.remove("show");
+}
 
 
 /* =========================================================
@@ -2797,7 +3048,7 @@ function calculate(){
     document.getElementById(
         "remainingCount"
     ).textContent =
-        90 - played;
+        fixtures.length - played;
 
 
     document.getElementById(
@@ -2986,8 +3237,19 @@ function renderTeamCards(sorted){
 
     grid.innerHTML = "";
 
-
     sorted.forEach(team => {
+
+        const pendingCount =
+            fixtures.filter(match =>
+                (
+                    match.home.name === team.name ||
+                    match.away.name === team.name
+                ) &&
+                (
+                    match.homeScore === null ||
+                    match.awayScore === null
+                )
+            ).length;
 
         grid.innerHTML += `
 
@@ -3006,50 +3268,33 @@ function renderTeamCards(sorted){
                     ${team.player}
                 </p>
 
-
                 <div class="team-mini-stats">
 
-
                     <div>
-
-                        <b>
-                            ${team.points}
-                        </b>
-
-                        <span>
-                            PTS
-                        </span>
-
+                        <b>${team.points}</b>
+                        <span>PTS</span>
                     </div>
 
-
                     <div>
-
-                        <b>
-                            ${team.gf}
-                        </b>
-
-                        <span>
-                            GF
-                        </span>
-
+                        <b>${team.gf}</b>
+                        <span>GF</span>
                     </div>
 
-
                     <div>
-
-                        <b>
-                            ${team.gd}
-                        </b>
-
-                        <span>
-                            GD
-                        </span>
-
+                        <b>${team.gd}</b>
+                        <span>GD</span>
                     </div>
-
 
                 </div>
+
+                <button
+                    class="pending-card-button"
+                    data-team="${team.name}"
+                    onclick="showPendingMatches('${team.name.replace("'", "\\'")}')"
+                >
+                    SHOW PENDING MATCHES
+                    (${pendingCount})
+                </button>
 
             </div>
 
@@ -3142,128 +3387,6 @@ function renderTopTeam(sorted){
    INTER MILAN
 ========================================================= */
 
-function renderInter(){
-
-    const container =
-        document.getElementById(
-            "interFixtures"
-        );
-
-
-    const matches =
-        fixtures.filter(match =>
-
-            match.home.name ===
-            "Inter Milan"
-
-            ||
-
-            match.away.name ===
-            "Inter Milan"
-
-        );
-
-
-    container.innerHTML =
-        matches.map(match => {
-
-            const isHome =
-                match.home.name ===
-                "Inter Milan";
-
-
-            const team =
-                isHome
-                ? match.home
-                : match.away;
-
-
-            const opponent =
-                isHome
-                ? match.away
-                : match.home;
-
-
-            let score = "VS";
-
-
-            if(
-                match.homeScore !== null &&
-                match.awayScore !== null
-            ){
-
-                if(isHome){
-
-                    score =
-                        `${match.homeScore} - ${match.awayScore}`;
-
-                }
-                else{
-
-                    score =
-                        `${match.awayScore} - ${match.homeScore}`;
-
-                }
-
-            }
-
-
-            return `
-
-                <div class="fixture">
-
-                    <div class="fixture-team">
-
-                        <span class="fixture-number">
-                            #${match.id}
-                        </span>
-
-                        <img
-                            src="${team.logo}"
-                            alt="${team.name}"
-                        >
-
-                        ${team.name}
-
-                    </div>
-
-
-                    <div
-                        class="match-score"
-                        style="
-                        color:#599aff;
-                        "
-                    >
-
-                        ${score}
-
-                    </div>
-
-
-                    <div class="fixture-team away">
-
-                        ${opponent.name}
-
-                        <img
-                            src="${opponent.logo}"
-                            alt="${opponent.name}"
-                        >
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-}
-
-
-/* =========================================================
-   SEMI FINALS
-========================================================= */
-
 function renderSemiFinals(sorted){
 
     if(sorted.length < 4){
@@ -3328,7 +3451,6 @@ function renderSemiFinals(sorted){
 
 renderFixtures();
 
-renderInter();
 
 calculate();
 
