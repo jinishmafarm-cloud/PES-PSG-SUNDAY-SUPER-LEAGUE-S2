@@ -1066,81 +1066,6 @@ footer{
 
 
 /* =========================================================
-   100 GOALS CELEBRATION — NIRMAL
-========================================================= */
-
-.top-team.goal-century{
-    position:relative;
-    overflow:hidden;
-    border-color:rgba(255,210,70,.65);
-    background:
-        radial-gradient(circle at 50% 45%,rgba(255,210,70,.18),transparent 42%),
-        linear-gradient(135deg,rgba(0,255,136,.13),rgba(22,18,8,.94));
-    box-shadow:0 0 28px rgba(255,190,35,.22),0 18px 65px rgba(0,0,0,.45);
-    animation:centuryPulse 1.1s ease-in-out infinite alternate;
-}
-
-.top-team.goal-century::before,
-.top-team.goal-century::after{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    pointer-events:none;
-    opacity:.75;
-    background:radial-gradient(circle,rgba(255,218,78,.25) 0 3%,transparent 4% 100%);
-    animation:crackleBurst .75s steps(2,end) infinite;
-}
-.top-team.goal-century::before{left:-35px;top:-40px}
-.top-team.goal-century::after{right:-35px;bottom:-45px;animation-delay:.25s}
-
-@keyframes centuryPulse{
-    from{box-shadow:0 0 18px rgba(255,190,35,.18),0 18px 65px rgba(0,0,0,.4)}
-    to{box-shadow:0 0 48px rgba(255,210,60,.48),0 18px 75px rgba(0,0,0,.5)}
-}
-@keyframes crackleBurst{
-    0%{transform:scale(.45) rotate(0deg);opacity:.15}
-    45%{transform:scale(1.15) rotate(18deg);opacity:.85}
-    100%{transform:scale(.75) rotate(36deg);opacity:.05}
-}
-
-.century-label{
-    display:none;
-    width:max-content;
-    margin-top:12px;
-    padding:8px 14px;
-    border-radius:999px;
-    color:#161006;
-    background:linear-gradient(90deg,#ffd23f,#fff0a1,#ffd23f);
-    font-size:13px;
-    font-weight:1000;
-    letter-spacing:3px;
-    box-shadow:0 0 18px rgba(255,210,63,.65);
-    animation:hundredLabel .75s ease-in-out infinite alternate;
-}
-.goal-century .century-label{display:inline-block}
-@keyframes hundredLabel{
-    from{transform:scale(1);filter:brightness(1)}
-    to{transform:scale(1.08);filter:brightness(1.25)}
-}
-
-.crackle-particle{
-    position:absolute;
-    width:3px;
-    height:14px;
-    border-radius:4px;
-    background:#ffe16b;
-    box-shadow:0 0 8px #ffd43b;
-    pointer-events:none;
-    animation:crackleFly .8s ease-out forwards;
-}
-@keyframes crackleFly{
-    0%{transform:translate(0,0) rotate(0deg) scale(.4);opacity:1}
-    100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1);opacity:0}
-}
-
-/* =========================================================
    UPDATED SCOREBOARD HEADER ANIMATIONS
 ========================================================= */
 
@@ -1398,7 +1323,7 @@ footer{
     Enter match results in the HTML.
 </p>
 
-<div id="centuryLabel" class="century-label">HUNDER HUNDRED</div>
+
 
 </div>
 
@@ -2593,9 +2518,8 @@ const teams = [
 {
     player:"Nirmal",
     name:"Barcelona",
-    logo:"https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
-    goalOverride:100
-},
+    logo:"https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg"
+  },
 
 {
     player:"Edwin",
@@ -3393,37 +3317,25 @@ function renderTopTeam(sorted){
     const top =
         [...sorted]
         .sort(
-            (a,b) =>
-                (b.goalOverride ?? b.gf) - (a.goalOverride ?? a.gf)
+            (a,b) => b.gf - a.gf
         )[0];
 
     const card = document.getElementById("topScorerCard");
-    const label = document.getElementById("centuryLabel");
 
     if(!top){
         return;
     }
 
-    if(top.gf > 0 || top.goalOverride != null){
-
-        const displayedGoals = top.goalOverride ?? top.gf;
+    if(top.gf > 0){
 
         document.getElementById("topTeamName").textContent = top.name;
         document.getElementById("topTeamPlayer").textContent =
             `${top.player} • ${top.name}`;
-        document.getElementById("topGoals").textContent = displayedGoals;
+        document.getElementById("topGoals").textContent = top.gf;
         document.getElementById("topTeamLogo").src = top.logo;
 
-        const isNirmalCentury =
-            top.player === "Nirmal" && Number(displayedGoals) >= 100;
-
-        card.classList.toggle("goal-century", isNirmalCentury);
-        label.textContent = isNirmalCentury ? "HUNDER HUNDRED" : "";
-
-        if(isNirmalCentury && !card.dataset.celebrating){
-            card.dataset.celebrating = "1";
-            startCenturyCrackles(card);
-        }
+        // Normal top-scorer mode: always use the actual goals from match results.
+        card.classList.remove("goal-century");
     }
     else{
 
@@ -3433,37 +3345,8 @@ function renderTopTeam(sorted){
         document.getElementById("topGoals").textContent = "0";
         document.getElementById("topTeamLogo").src = "";
         card.classList.remove("goal-century");
-        card.removeAttribute("data-celebrating");
-        label.textContent = "";
     }
 }
-
-function startCenturyCrackles(card){
-
-    const burst = () => {
-        if(!card.classList.contains("goal-century")) return;
-
-        for(let i=0;i<14;i++){
-            const p = document.createElement("span");
-            p.className = "crackle-particle";
-            const angle = (Math.PI * 2 * i / 14) + (Math.random()-.5)*.35;
-            const distance = 45 + Math.random()*100;
-
-            p.style.left = (50 + (Math.random()-.5)*35) + "%";
-            p.style.top = (50 + (Math.random()-.5)*30) + "%";
-            p.style.setProperty("--dx", Math.cos(angle)*distance + "px");
-            p.style.setProperty("--dy", Math.sin(angle)*distance + "px");
-            p.style.setProperty("--rot", (Math.random()*180-90) + "deg");
-
-            card.appendChild(p);
-            setTimeout(()=>p.remove(),850);
-        }
-        setTimeout(burst,900);
-    };
-
-    burst();
-}
-
 
 
 /* =========================================================
