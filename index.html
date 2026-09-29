@@ -411,6 +411,33 @@ tr.qualify{
 }
 
 
+.qualified-badge{
+    display:inline-grid;
+    place-items:center;
+    width:24px;
+    height:24px;
+    margin-left:8px;
+    border-radius:7px;
+    background:linear-gradient(135deg,#00ff88,#00aaff);
+    color:#06100d;
+    font-size:11px;
+    font-weight:1000;
+    box-shadow:0 0 10px rgba(0,255,136,.35);
+    vertical-align:middle;
+}
+
+.qualified-badge::after{
+    content:"QUALIFIED";
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.qualified-badge:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 16px rgba(0,255,136,.55);
+}
+
 /* =========================================================
    TEAM CARDS
 ========================================================= */
@@ -2981,13 +3008,76 @@ function renderStandings(sorted){
 
     body.innerHTML = "";
 
+    /*
+       QUALIFIED (Q):
+       A team receives Q only when it is mathematically
+       guaranteed to finish inside the top 4.
+
+       We calculate the maximum points every other team
+       can still reach. If fewer than 4 other teams can
+       reach or exceed this team's current points, the team
+       is mathematically qualified.
+    */
+    const qualifiedTeams = new Set();
+
+    sorted.forEach(team => {
+
+        const remainingMatches =
+            fixtures.filter(match =>
+                (
+                    match.home.name === team.name ||
+                    match.away.name === team.name
+                ) &&
+                (
+                    match.homeScore === null ||
+                    match.awayScore === null
+                )
+            ).length;
+
+        const maximumPoints =
+            team.points + (remainingMatches * 3);
+
+        const possibleCompetitors =
+            sorted.filter(other => {
+
+                if(other.name === team.name){
+                    return false;
+                }
+
+                const otherRemaining =
+                    fixtures.filter(match =>
+                        (
+                            match.home.name === other.name ||
+                            match.away.name === other.name
+                        ) &&
+                        (
+                            match.homeScore === null ||
+                            match.awayScore === null
+                        )
+                    ).length;
+
+                const otherMaximum =
+                    other.points + (otherRemaining * 3);
+
+                return otherMaximum >= team.points;
+            }).length;
+
+        if(possibleCompetitors < 4){
+            qualifiedTeams.add(team.name);
+        }
+
+    });
+
 
     sorted.forEach((team,index) => {
+
+        const isQualified =
+            qualifiedTeams.has(team.name);
 
         body.innerHTML += `
 
             <tr class="${
-                index < 4
+                isQualified || index < 4
                 ? "qualify"
                 : ""
             }">
@@ -3013,6 +3103,12 @@ function renderStandings(sorted){
                             <strong>
                                 ${team.name}
                             </strong>
+
+                            ${
+                                isQualified
+                                ? `<span class="qualified-badge" title="Mathematically qualified for the semi-finals">Q</span>`
+                                : ""
+                            }
 
                             <br>
 
