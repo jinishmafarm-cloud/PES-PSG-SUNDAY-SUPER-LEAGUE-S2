@@ -2016,6 +2016,17 @@ footer{
 
 </style>
 
+
+<style>
+.premium-aggregate-card{position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(145deg,rgba(15,23,42,.96),rgba(30,41,59,.92));border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 50px rgba(0,0,0,.28);padding:24px;margin:18px 0;}
+.premium-aggregate-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(34,197,94,.12),transparent 40%,rgba(59,130,246,.12));pointer-events:none;}
+.aggregate-series{text-align:center;font-size:11px;letter-spacing:3px;font-weight:800;opacity:.7;margin:-4px 0 18px;}
+.premium-aggregate-box{margin:18px auto 10px;max-width:520px;text-align:center;padding:18px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px rgba(255,255,255,.08);}
+.premium-aggregate-box span{display:block;font-size:11px;letter-spacing:3px;font-weight:900;opacity:.72;}
+.premium-aggregate-box strong{display:block;font-size:34px;line-height:1.15;margin:7px 0;font-weight:950;letter-spacing:2px;}
+.premium-aggregate-box strong b{opacity:.5;padding:0 8px;}
+.premium-aggregate-box small{font-size:10px;letter-spacing:2px;font-weight:800;opacity:.65;}
+</style>
 </head>
 
 
@@ -4320,19 +4331,19 @@ const KNOCKOUT_BACKEND_DATA = {
     ===================================================== */
 
     semiFinal1: {
-        match1: { home: 0, away: 0 },
-        match2: { home: 0, away: 0 }
+        match1: { home: null, away: null },
+        match2: { home: null, away: null }
     },
 
     semiFinal2: {
-        match1: { home: 4, away: 3 },
-        match2: { home: 0, away: 0 }
+        match1: { home: null, away: null },
+        match2: { home: null, away: null }
     },
 
     /* GRAND FINAL SCORE */
     final: {
-        home: 0,
-        away: 0
+        home: null,
+        away: null
     }
 
 };
@@ -4357,25 +4368,17 @@ function renderSemiScoreEntry(sorted){
     const semiDisplay = document.getElementById("semiMatchDisplay");
     const finalDisplay = document.getElementById("finalMatchDisplay");
 
-    if(!semiDisplay || !finalDisplay || sorted.length < 4){
-        return;
-    }
+    if(!semiDisplay || !finalDisplay || sorted.length < 4) return;
 
-    /* QUALIFIED TEAMS = TOP 4 FROM THE LEAGUE TABLE */
     const qualified = [sorted[0], sorted[1], sorted[2], sorted[3]];
 
-    /* SF1: 1st vs 4th — TWO LEGS */
     const sf1 = {
-        home: qualified[0],
-        away: qualified[3],
+        home: qualified[0], away: qualified[3],
         match1: KNOCKOUT_BACKEND_DATA.semiFinal1.match1,
         match2: KNOCKOUT_BACKEND_DATA.semiFinal1.match2
     };
-
-    /* SF2: 2nd vs 3rd — TWO LEGS */
     const sf2 = {
-        home: qualified[1],
-        away: qualified[2],
+        home: qualified[1], away: qualified[2],
         match1: KNOCKOUT_BACKEND_DATA.semiFinal2.match1,
         match2: KNOCKOUT_BACKEND_DATA.semiFinal2.match2
     };
@@ -4384,118 +4387,101 @@ function renderSemiScoreEntry(sorted){
         renderAggregateSemiFinal(sf1, "SEMI FINAL 1") +
         renderAggregateSemiFinal(sf2, "SEMI FINAL 2");
 
-    const sf1HomeTotal = Number(sf1.match1.home) + Number(sf1.match2.home);
-    const sf1AwayTotal = Number(sf1.match1.away) + Number(sf1.match2.away);
+    const sf1Finished = isLegFinished(sf1.match1) && isLegFinished(sf1.match2);
+    const sf2Finished = isLegFinished(sf2.match1) && isLegFinished(sf2.match2);
 
-    const sf2HomeTotal = Number(sf2.match1.home) + Number(sf2.match2.home);
-    const sf2AwayTotal = Number(sf2.match1.away) + Number(sf2.match2.away);
+    const sf1HomeTotal = sf1Finished ? Number(sf1.match1.home) + Number(sf1.match2.home) : 0;
+    const sf1AwayTotal = sf1Finished ? Number(sf1.match1.away) + Number(sf1.match2.away) : 0;
+    const sf2HomeTotal = sf2Finished ? Number(sf2.match1.home) + Number(sf2.match2.home) : 0;
+    const sf2AwayTotal = sf2Finished ? Number(sf2.match1.away) + Number(sf2.match2.away) : 0;
 
-    const winner1 = aggregateWinner(sf1.home, sf1.away, sf1HomeTotal, sf1AwayTotal);
-    const winner2 = aggregateWinner(sf2.home, sf2.away, sf2HomeTotal, sf2AwayTotal);
+    const winner1 = sf1Finished ? aggregateWinner(sf1.home, sf1.away, sf1HomeTotal, sf1AwayTotal) : null;
+    const winner2 = sf2Finished ? aggregateWinner(sf2.home, sf2.away, sf2HomeTotal, sf2AwayTotal) : null;
 
-    /* FINALIST NAMES APPEAR ONLY AFTER THE AGGREGATE WINNER IS DECIDED */
-    const finalHomeScore = Number(KNOCKOUT_BACKEND_DATA.final.home);
-    const finalAwayScore = Number(KNOCKOUT_BACKEND_DATA.final.away);
+    /* A finalist is displayed ONLY after BOTH LEGS of that semi-final are finished. */
     const finalReady = Boolean(winner1 && winner2);
+    const finalHomeScore = KNOCKOUT_BACKEND_DATA.final.home;
+    const finalAwayScore = KNOCKOUT_BACKEND_DATA.final.away;
+    const finalScoreReady = finalReady && finalHomeScore !== null && finalAwayScore !== null;
+    const champion = finalScoreReady ? knockoutWinner(winner1, winner2, Number(finalHomeScore), Number(finalAwayScore)) : null;
 
-    const champion = finalReady
-        ? knockoutWinner(winner1, winner2, finalHomeScore, finalAwayScore)
-        : null;
-
-    const finalHomeHTML = winner1
+    /* FINALISTS APPEAR ONLY AFTER BOTH MATCHES OF BOTH SEMI-FINALS ARE COMPLETED */
+    const finalHomeHTML = finalReady
         ? renderKnockoutTeam(winner1, "FINALIST")
-        : `<div class="knockout-team waiting-team">
-                <div class="knockout-logo">?</div>
-                <div class="knockout-team-name">WAITING FOR SF1 AGGREGATE WINNER</div>
-           </div>`;
+        : `<div class="knockout-team waiting-team"><div class="knockout-logo">?</div><div class="knockout-team-name">FINALIST REVEALED AFTER SEMI-FINALS</div></div>`;
 
-    const finalAwayHTML = winner2
+    const finalAwayHTML = finalReady
         ? renderKnockoutTeam(winner2, "FINALIST", true)
-        : `<div class="knockout-team waiting-team">
-                <div class="knockout-logo">?</div>
-                <div class="knockout-team-name">WAITING FOR SF2 AGGREGATE WINNER</div>
-           </div>`;
+        : `<div class="knockout-team waiting-team"><div class="knockout-logo">?</div><div class="knockout-team-name">FINALIST REVEALED AFTER SEMI-FINALS</div></div>`;
 
     finalDisplay.innerHTML = `
         <div class="match-entry">
-
             ${finalHomeHTML}
-
             <div class="match-score-entry">
-                <div class="backend-score">${finalReady ? finalHomeScore : "-"}</div>
+                <div class="backend-score">${finalScoreReady ? finalHomeScore : "-"}</div>
                 <span class="score-dash">:</span>
-                <div class="backend-score">${finalReady ? finalAwayScore : "-"}</div>
+                <div class="backend-score">${finalScoreReady ? finalAwayScore : "-"}</div>
             </div>
-
             ${finalAwayHTML}
-
         </div>
-
         <div class="entry-status ${champion ? "winner" : ""}">
-            ${
-                champion
-                ? `🏆 CHAMPION: ${champion.name}`
-                : finalReady
-                    ? "FINAL RESULT PENDING"
-                    : "FINALISTS WILL APPEAR AFTER AGGREGATE SEMI-FINAL RESULTS"
-            }
-        </div>
-    `;
+            ${champion ? `🏆 CHAMPION: ${champion.name}` : finalReady ? "FINAL RESULT PENDING" : "FINALISTS APPEAR AFTER BOTH SEMI-FINAL LEGS ARE FINISHED"}
+        </div>`;
+}
+
+function isLegFinished(leg){
+    return leg && leg.home !== null && leg.away !== null && leg.home !== undefined && leg.away !== undefined && leg.home !== "" && leg.away !== "";
 }
 
 function renderAggregateSemiFinal(match, label){
 
-    const m1Home = Number(match.match1.home);
-    const m1Away = Number(match.match1.away);
-    const m2Home = Number(match.match2.home);
-    const m2Away = Number(match.match2.away);
+    const finished1 = isLegFinished(match.match1);
+    const finished2 = isLegFinished(match.match2);
+    const complete = finished1 && finished2;
 
-    const homeTotal = m1Home + m2Home;
-    const awayTotal = m1Away + m2Away;
+    const m1Home = finished1 ? Number(match.match1.home) : "-";
+    const m1Away = finished1 ? Number(match.match1.away) : "-";
+    const m2Home = finished2 ? Number(match.match2.home) : "-";
+    const m2Away = finished2 ? Number(match.match2.away) : "-";
 
-    const winner = aggregateWinner(match.home, match.away, homeTotal, awayTotal);
+    const homeTotal = complete ? Number(match.match1.home) + Number(match.match2.home) : "-";
+    const awayTotal = complete ? Number(match.match1.away) + Number(match.match2.away) : "-";
+    const winner = complete ? aggregateWinner(match.home, match.away, Number(homeTotal), Number(awayTotal)) : null;
 
     return `
-        <div class="semi-match-card">
-
+        <div class="semi-match-card premium-aggregate-card">
             <div class="semi-match-number">${label}</div>
+            <div class="aggregate-series">TWO-LEG SEMI-FINAL</div>
 
             <div class="aggregate-leg-title">LEG 1</div>
             <div class="match-entry">
                 ${renderKnockoutTeam(match.home, "QUALIFIED")}
-                <div class="match-score-entry">
-                    <div class="backend-score">${m1Home}</div>
-                    <span class="score-dash">:</span>
-                    <div class="backend-score">${m1Away}</div>
-                </div>
+                <div class="match-score-entry"><div class="backend-score">${m1Home}</div><span class="score-dash">:</span><div class="backend-score">${m1Away}</div></div>
                 ${renderKnockoutTeam(match.away, "QUALIFIED", true)}
             </div>
 
             <div class="aggregate-leg-title">LEG 2</div>
             <div class="match-entry">
                 ${renderKnockoutTeam(match.home, "QUALIFIED")}
-                <div class="match-score-entry">
-                    <div class="backend-score">${m2Home}</div>
-                    <span class="score-dash">:</span>
-                    <div class="backend-score">${m2Away}</div>
-                </div>
+                <div class="match-score-entry"><div class="backend-score">${m2Home}</div><span class="score-dash">:</span><div class="backend-score">${m2Away}</div></div>
                 ${renderKnockoutTeam(match.away, "QUALIFIED", true)}
             </div>
 
-            <div class="aggregate-score">
-                AGGREGATE: <strong>${homeTotal} : ${awayTotal}</strong>
+            <div class="premium-aggregate-box">
+                <span>AGGREGATE TOTAL</span>
+                <strong>${homeTotal} <b>:</b> ${awayTotal}</strong>
+                <small>${complete ? "2 LEGS COMPLETED" : "AWAITING BOTH MATCH RESULTS"}</small>
             </div>
 
             <div class="entry-status ${winner ? "winner" : ""}">
-                ${
-                    winner
-                    ? `✓ FINALIST: ${winner.name}`
-                    : "AGGREGATE RESULT PENDING / TIED"
-                }
+                ${winner ? `🏆 FINALIST: ${winner.name}` : complete ? "AGGREGATE TIED — FINALIST NOT DECIDED" : "FINALIST WILL APPEAR AFTER BOTH MATCHES ARE FINISHED"}
             </div>
+        </div>`;
+}
 
-        </div>
-    `;
+function aggregateWinner(home, away, homeTotal, awayTotal){
+    if(homeTotal === awayTotal) return null;
+    return homeTotal > awayTotal ? home : away;
 }
 
 function knockoutWinner(home, away, homeScore, awayScore){
